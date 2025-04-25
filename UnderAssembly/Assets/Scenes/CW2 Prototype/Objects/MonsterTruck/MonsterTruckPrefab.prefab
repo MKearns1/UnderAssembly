@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 8481143702184089657}
   m_Layer: 8
   m_Name: MonsterTruckPrefab
-  m_TagString: Untagged
+  m_TagString: BaseObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   - {r: 0, g: 0.58047485, b: 1, a: 0}
   - {r: 1, g: 0.3150943, b: 0.9931805, a: 0}
   DesiredColour: {r: 0, g: 0, b: 0, a: 0}
-  CurrentColour: {r: 0, g: 0, b: 0, a: 0}
+  CurrentColour: {r: 0.72156864, g: 0.72156864, b: 0.72156864, a: 1}
   CorrectColour: 0
   MaterialIndex: 5
 --- !u!65 &1854569750602924389
@@ -1324,6 +1324,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d9bcf7355eba74e46906456ad20d520d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d9340350a9709045bced458479c8ef9, type: 2}
+    - target: {fileID: -7511558181221131132, guid: d9bcf7355eba74e46906456ad20d520d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 453499d61be208f48ab87ad0871bc8c5, type: 2}
+    - target: {fileID: -7511558181221131132, guid: d9bcf7355eba74e46906456ad20d520d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: cbbbb674db1503f4a82b817ce7f4c7e0, type: 2}
+    - target: {fileID: -7511558181221131132, guid: d9bcf7355eba74e46906456ad20d520d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[9]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5be5c4c3221ceaf4cb8d41c1d8eafea9, type: 2}
     - target: {fileID: 919132149155446097, guid: d9bcf7355eba74e46906456ad20d520d,
         type: 3}
       propertyPath: m_Name

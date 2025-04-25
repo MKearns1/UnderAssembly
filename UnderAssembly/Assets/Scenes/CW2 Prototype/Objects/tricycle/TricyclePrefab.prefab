@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 8492651120593639467}
   m_Layer: 8
   m_Name: TricyclePrefab
-  m_TagString: Untagged
+  m_TagString: BaseObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,6 +519,7 @@ MonoBehaviour:
   DesiredColour: {r: 0, g: 0, b: 0, a: 0}
   CurrentColour: {r: 0, g: 0, b: 0, a: 0}
   CorrectColour: 0
+  MaterialIndex: 0
 --- !u!65 &1854569750602924389
 BoxCollider:
   m_ObjectHideFlags: 0

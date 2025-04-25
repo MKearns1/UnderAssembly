@@ -12,7 +12,7 @@ public class GeneralScript : MonoBehaviour
     public GameObject Assembly;
     public Transform NewObjectSpawn;
     public List<GameObject> ObjectsToSpawn;
-    Vector3[] spawnRotations = { new Vector3(285.08551f, 270.003845f, 179.999817f), new Vector3(0, 0, 0), new Vector3(0, 0, 0) };
+    Vector3[] spawnRotations = { new Vector3(285.08551f, 270.003845f, 179.999817f), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0) };
 
     void Awake()
     {
@@ -34,7 +34,14 @@ public class GeneralScript : MonoBehaviour
     {
         //CurrentProduct = GameObject.Find("RobotBodyPrefab");
 
-        
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag("BaseObject"))
+        {
+            foreach( GameObject snappoint in g.GetComponent<ObjectBaseScript>().SnapPoints)
+            {
+                productSnapPoints.Add(snappoint.transform);
+
+            }
+        }
     }
 
     public void SpawnNewObject()
@@ -44,7 +51,7 @@ public class GeneralScript : MonoBehaviour
             int randint = Random.Range(0, ObjectsToSpawn.Count);
             Quaternion rotation = Quaternion.Euler(spawnRotations[randint]);
             CurrentProduct = Instantiate(ObjectsToSpawn[randint], NewObjectSpawn.position, rotation);
-
+            Debug.Log(randint);
             if (CurrentProduct != null && CurrentProduct.transform.childCount > 1)
             {
                 foreach (Transform t in CurrentProduct.transform.GetChild(1))
@@ -57,7 +64,14 @@ public class GeneralScript : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(CurrentProduct);
+
+        for (int i = 0; i < productSnapPoints.Count; i++)
+        {
+            if(productSnapPoints[i] == null)
+            {
+                productSnapPoints.RemoveAt(i);
+            }
+        }
     }
 
 }
