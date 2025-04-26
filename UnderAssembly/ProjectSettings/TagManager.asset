@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SprayGun
   - BaseObject
+  - ColourChargeCap
   layers:
   - Default
   - TransparentFX
