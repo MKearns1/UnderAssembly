@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class ColourMixerScript : MonoBehaviour
 {
-    GameObject Slider;
     float DyePullAmount;
     public float MaxDyePullAmount;
     MixerLeverScript Lever;
-    ParticleSystem dyeParticles;
+    public ParticleSystem dyeParticles;
+    public GameObject Slider;
+
     Color DyeColor = Color.red;
     public enum Dye { red, yellow, blue };
     public Dye CurrentDye;
@@ -22,8 +23,6 @@ public class ColourMixerScript : MonoBehaviour
     {
        GetComponent<Renderer>().material.color= MixRYB(0, 5, 1);
         Lever = transform.Find("PaintMixerLever").GetChild(0).GetComponent<MixerLeverScript>();
-        Slider = transform.GetChild(1).transform.Find("Slider").gameObject;
-        dyeParticles = transform.Find("Particle System").GetComponent<ParticleSystem>();
 
         DyePullAmount = MaxDyePullAmount;
     }
@@ -41,41 +40,48 @@ public class ColourMixerScript : MonoBehaviour
         colorblock.normalColor = DyeColor;
         Slider.GetComponent<Slider>().colors= colorblock;
 
-        if (Lever.LeverDown && DyePullAmount > 0)
+        if (Lever.LeverDown)
         {
-            dyeUnitTimer += Time.deltaTime;
             DyePullAmount -= Time.deltaTime;
-            emission.enabled =true;
+            emission.enabled = true;
 
-            if (dyeUnitTimer >= 1f && !dyeUnitDispensedThisPull)
+            if (DyePullAmount < 0)
             {
-                dyeUnitDispensedThisPull = true;
+                emission.enabled = false;
 
-                switch (CurrentDye)
+                // dyeUnitTimer += Time.deltaTime;
+
+                if (!dyeUnitDispensedThisPull)
                 {
-                    case Dye.red:
-                        Raycast(1, 0, 0);
-                        DyeColor = Color.red;
-                        break;
-                    case Dye.yellow:
-                        Raycast(0, 1, 0);
-                        DyeColor = Color.yellow;
+                    dyeUnitDispensedThisPull = true;
 
-                        break;
-                    case Dye.blue:
-                        Raycast(0, 0, 1);
-                        DyeColor = Color.blue;
+                    switch (CurrentDye)
+                    {
+                        case Dye.red:
+                            Raycast(1, 0, 0);
+                            DyeColor = Color.red;
+                            break;
+                        case Dye.yellow:
+                            Raycast(0, 1, 0);
+                            DyeColor = Color.yellow;
 
-                        break;
-                    default:
-                        break;
+                            break;
+                        case Dye.blue:
+                            Raycast(0, 0, 1);
+                            DyeColor = Color.blue;
 
+                            break;
+                        default:
+                            break;
+
+                    }
                 }
             }
         }
         else
         {
-            dyeUnitTimer = 0;
+           // dyeUnitTimer = 0;
+            DyePullAmount = MaxDyePullAmount;
             dyeUnitDispensedThisPull = false;
             emission.enabled = false;
         }
@@ -162,13 +168,13 @@ public class ColourMixerScript : MonoBehaviour
 
     public Dictionary<string, Color> dyeMixLookup = new Dictionary<string, Color>()
     {
-    { "400", new Color(255, 0, 0) }, // Crimson
+    { "400", new Color(1f, 0, 0) }, // Crimson
     { "040", new Color(1.0f, 0.96f, 0.31f) }, // Lemon
     { "004", new Color(0.0f, 0.28f, 0.67f) }, // Cobalt
     { "220", new Color(1.0f, 0.65f, 0.0f) },  // Orange
     { "202", new Color(0.54f, 0.17f, 0.89f) }, // Violet
     { "022", new Color(0.31f, 0.78f, 0.47f) }, // Emerald
-    { "112", new Color(0.42f, 0.35f, 0.80f) }, // Slate Blue
+    { "112", new Color(.1f,.1f,.1f) }, // Black
     { "121", new Color(0.5f, 0.5f, 0.0f) },    // Olive
     { "211", new Color(0.55f, 0.27f, 0.07f) }, // Brown
     { "103", new Color(0.29f, 0.0f, 0.51f) },  // Indigo

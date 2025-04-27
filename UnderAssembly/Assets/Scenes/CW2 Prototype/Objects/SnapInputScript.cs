@@ -46,7 +46,7 @@ public class SnapInputScript : MonoBehaviour, IInteractable
             {
                 if ((t != null))
                 {
-                    if (Vector3.Distance(transform.position, t.position) < .05f)
+                    if (Vector3.Distance(transform.position, t.position) < .05f                      && false)
                     {
                         Debug.Log("CLOSETOOBJECT");
                         if (!attachedToObject)

@@ -11,7 +11,7 @@ public class MixerLeverScript : MonoBehaviour
     private float pullTimer = 0f;
     public float unitDispenseTime = 1f;
     private bool unitDispensed = false;
-
+    public float LetGoRange;
     public bool LeverDown;
 
     private GameObject grabbingHand;
@@ -19,10 +19,11 @@ public class MixerLeverScript : MonoBehaviour
     void Start()
     {
         if (grabInteractable == null)
-            grabInteractable = transform.GetChild(0).GetComponent<XRGrabInteractable>();
+            grabInteractable = transform.GetComponent<XRGrabInteractable>();
 
-        // grabInteractable.selectEntered.AddListener(OnGrab);
-        // grabInteractable.selectExited.AddListener(OnRelease);
+         grabInteractable.selectEntered.AddListener(OnGrab);
+         grabInteractable.selectExited.AddListener(OnRelease);
+        pivot = transform.parent;
     }
 
     void Update()
@@ -33,7 +34,15 @@ public class MixerLeverScript : MonoBehaviour
 
         if (grabbingHand != null)
         {
-            Vector3 handDirection = grabbingHand.transform.position - pivot.position;
+            Vector3 handDirection = grabbingHand.transform.position - transform.GetChild(0).position;
+            if(handDirection.magnitude > LetGoRange)
+            {
+                var interactor = grabbingHand.GetComponent<IXRSelectInteractor>();
+                grabInteractable.interactionManager.SelectExit(interactor, grabInteractable);
+                Debug.Log("asdasds");
+
+            }
+            Debug.Log("notnull");
 
         }
 
@@ -50,7 +59,7 @@ public class MixerLeverScript : MonoBehaviour
                 //if (pullTimer >= unitDispenseTime && !unitDispensed)
                 {
                     DispenseDyeUnit();
-                    unitDispensed = true; Debug.Log("Up");
+                    unitDispensed = true; 
 
                     // StopSprayAfterDelay(0.5f); // Stops after a short burst
                 }
@@ -64,7 +73,6 @@ public class MixerLeverScript : MonoBehaviour
 
                 if(pullTimer < 1)
                 {
-                    Debug.Log("Down");
 
                 }
 
