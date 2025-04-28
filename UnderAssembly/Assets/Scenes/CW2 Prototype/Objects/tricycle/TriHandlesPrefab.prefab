@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2492398771403122347}
   - component: {fileID: 1449363463288784984}
   - component: {fileID: 2304632779708018983}
+  - component: {fileID: -8059617929169584284}
   m_Layer: 7
   m_Name: TriHandlesPrefab
   m_TagString: Untagged
@@ -232,6 +233,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.09439194, y: 0.07100797, z: 0.16}
   m_Center: {x: 0.0038247705, y: 0.045377612, z: 0}
+--- !u!114 &-8059617929169584284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181805565273439160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0965694042271644f805428e18a0067c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: Handlebar
 --- !u!1 &7521864454064820426
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,6 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputObject: Handle
   ParentObject: {fileID: 5181805565273439160}
+  InheritParentColour: 0
 --- !u!1001 &1998434296515840762
 PrefabInstance:
   m_ObjectHideFlags: 0

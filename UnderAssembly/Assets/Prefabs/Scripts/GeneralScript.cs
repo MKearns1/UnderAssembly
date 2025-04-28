@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GeneralScript : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GeneralScript : MonoBehaviour
     public List<GameObject> ObjectsToSpawn;
     Vector3[] spawnRotations = { new Vector3(285.08551f, 270.003845f, 179.999817f), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0) };
 
+    public InputActionReference input;
     void Awake()
     {
         // Enforce only one instance
@@ -26,8 +28,7 @@ public class GeneralScript : MonoBehaviour
             Destroy(gameObject); 
             return;
         }
-
-       
+     
     }
 
     void Start()
@@ -72,6 +73,14 @@ public class GeneralScript : MonoBehaviour
                 productSnapPoints.RemoveAt(i);
             }
         }
+
+      
+       // input.ToInputAction().performed += PressedPrimaryButton;
     }
 
+    private void PressedPrimaryButton(InputAction.CallbackContext context)
+    {
+        Debug.Log(context.performed);
+       // throw new System.NotImplementedException();
+    }
 }

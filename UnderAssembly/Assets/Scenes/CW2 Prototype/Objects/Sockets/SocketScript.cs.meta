@@ -3,7 +3,15 @@ guid: e2dcd6b1b5545b742aef4c381b80d2ac
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_InteractionManager: {instanceID: 0}
+  - m_AttachTransform: {instanceID: 0}
+  - m_StartingSelectedInteractable: {instanceID: 0}
+  - m_StartingTargetFilter: {instanceID: 0}
+  - m_InteractableHoverMeshMaterial: {instanceID: 0}
+  - m_InteractableCantHoverMeshMaterial: {instanceID: 0}
+  - allowedHoverMaterialInstance: {instanceID: 0}
+  - forbiddenHoverMaterialInstance: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

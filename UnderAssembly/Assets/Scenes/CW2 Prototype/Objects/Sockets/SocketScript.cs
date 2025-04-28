@@ -1,28 +1,69 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class SocketScript : MonoBehaviour
+public class CustomSocketInteractor : XRSocketInteractor
 {
-    XRSocketInteractor idf;
+    public List<string> EnabledObjects;
+    
+    [Header("Custom Hover Materials")]
+    public Material AllowedHoverMaterial;
+    public Material ForbiddenHoverMaterial;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        idf = GetComponent<XRSocketInteractor>();
-    }
+    //[SerializeField] private Material allowedHoverMaterialInstance;
+    //[SerializeField] private Material forbiddenHoverMaterialInstance;
 
-    // Update is called once per frame
-    void Update()
+    private static bool initialized = false;
+    
+    protected override void Awake()
     {
-        
-        ////idf.interactablesSelected;
-        //foreach(XRSocketInteractor x in idf.interactablesSelected)
+        base.Awake();
+
+        // Initialize static materials only once
+        //if (!initialized)
         //{
-        //    Debug.Log(x.gameObject);
+        //    // Ensure that you only assign the static variables the first time
+        //    if (allowedHoverMaterialInstance != null)
+        //        AllowedHoverMaterial = allowedHoverMaterialInstance;
 
+        //    if (forbiddenHoverMaterialInstance != null)
+        //        ForbiddenHoverMaterial = forbiddenHoverMaterialInstance;
+
+        //    initialized = true;
         //}
-        Debug.Log(idf.selectTarget);
     }
+
+    
+    // Your allowed check
+    private bool IsInteractableAllowed(IXRInteractable interactable)
+    {
+        var obj = interactable.transform.gameObject;
+        if (obj.GetComponent<ComponentScript>() != null)
+        {
+            foreach (string name in EnabledObjects)
+            {
+                if (obj.GetComponent<ComponentScript>().ObjectName == name)
+                { return true; }
+            }
+        }
+        // Example: allow based on Tag
+        return false;
+    }
+
+    protected override Material GetHoveredInteractableMaterial(IXRHoverInteractable interactable)
+    {
+        if (!IsInteractableAllowed(interactable))
+            return ForbiddenHoverMaterial;
+
+        return hasSelection ? ForbiddenHoverMaterial : AllowedHoverMaterial;
+    }
+
+    public override bool CanSelect(IXRSelectInteractable interactable)
+    {
+        return IsInteractableAllowed(interactable) &&
+               base.CanSelect(interactable) &&
+               ((!hasSelection && !interactable.isSelected) ||
+                (IsSelecting(interactable) && interactable.interactorsSelecting.Count == 1));
+    }
+
 }

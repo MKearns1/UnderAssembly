@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2492398771403122347}
   - component: {fileID: 1449363463288784984}
   - component: {fileID: 2304632779708018983}
+  - component: {fileID: 2165363892563099934}
   m_Layer: 7
   m_Name: WoodenPolePrefab
   m_TagString: Untagged
@@ -230,8 +231,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1140039, y: 0.06824084, z: 0.068695486}
-  m_Center: {x: 0.0039168596, y: 0.03205663, z: -0.007400817}
+  m_Size: {x: 0.03145504, y: 0.22369051, z: 0.032975197}
+  m_Center: {x: -0.000248909, y: -0.113, z: -0.000054836273}
+--- !u!114 &2165363892563099934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181805565273439160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0965694042271644f805428e18a0067c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectName: WoodLeg
 --- !u!1 &7521864454064820426
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +388,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e5bc949f63b2d394b8084f04924766c0,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 11.113588
+      value: 11.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5bc949f63b2d394b8084f04924766c0,
         type: 3}
@@ -384,7 +398,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e5bc949f63b2d394b8084f04924766c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.1123
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5bc949f63b2d394b8084f04924766c0,
         type: 3}
