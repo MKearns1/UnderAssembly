@@ -33,8 +33,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1476253637129194946}
   - {fileID: 7348818298254089140}
+  - {fileID: 1476253637129194946}
+  - {fileID: 6254365668852401962}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2492398771403122347
@@ -166,9 +167,9 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 6254365668852401962}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
+  m_UseDynamicAttach: 1
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
@@ -232,7 +233,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.03145504, y: 0.22369051, z: 0.032975197}
-  m_Center: {x: -0.000248909, y: -0.113, z: -0.000054836273}
+  m_Center: {x: -0.000248909, y: 0, z: -0.000054836273}
 --- !u!114 &2165363892563099934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +247,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: WoodLeg
+--- !u!1 &7415806110490011785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6254365668852401962}
+  m_Layer: 7
+  m_Name: AttachPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6254365668852401962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415806110490011785}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1113, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8294213394235801289}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7521864454064820426
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad86cf08825778340a3c6540534ee960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputObject: RobotHead
+  InputObject: 
   ParentObject: {fileID: 5181805565273439160}
   InheritParentColour: 1
 --- !u!1001 &7095005816652971103
@@ -393,12 +425,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e5bc949f63b2d394b8084f04924766c0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5bc949f63b2d394b8084f04924766c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1123
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5bc949f63b2d394b8084f04924766c0,
         type: 3}
@@ -440,6 +472,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e5bc949f63b2d394b8084f04924766c0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 70ef13e24708c234581eccf1fbcadec4, type: 2}
     - target: {fileID: 919132149155446097, guid: e5bc949f63b2d394b8084f04924766c0,
         type: 3}
       propertyPath: m_Name

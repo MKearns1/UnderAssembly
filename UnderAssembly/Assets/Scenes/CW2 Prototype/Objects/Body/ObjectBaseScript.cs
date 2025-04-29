@@ -19,6 +19,8 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
     public int MaterialIndex;
     public List<GameObject> AttachedObjects;
 
+    float checkSocketsTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,9 +60,17 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
             transform.position += Vector3.right * Time.deltaTime * GameObject.Find("Assembly (2)").transform.GetChild(2).GetComponent<AssemblyScript>().AssemblySpeed/20;
         }
 
-       // ObjectColourToChange.GetComponent<MeshRenderer>().materials[MaterialIndex].color = CurrentColour;
-       // Debug.Log("snaps " + AllSnapsCorrect);
-       // Debug.Log("correctcolour " + CorrectColour);
+         ObjectColourToChange.GetComponent<MeshRenderer>().materials[MaterialIndex].color = CurrentColour;
+        // Debug.Log("snaps " + AllSnapsCorrect);
+        // Debug.Log("correctcolour " + CorrectColour);
+        checkSocketsTimer += Time.deltaTime;
+        if (checkSocketsTimer > 1)
+        {
+            foreach(Transform socket in transform.Find("Triggers").transform)
+            {
+
+            }
+        }
     }
 
     bool ColorsAreEqual(Color a, Color b, float tolerance = 0.01f)
@@ -85,12 +95,17 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
         AttachedObjects.Add(Component);
 
         StartCoroutine(WaitUntilSettled(Component, AttachPoint));
-
+            
     }
 
     public void OnRemoveComponent(GameObject AttachPoint)
     {
-        Destroy(AttachPoint.transform.Find("FakeComponent").gameObject);
+        foreach (Transform child in AttachPoint.transform)
+        {
+            if(child.name == "FakeComponent")
+                Destroy(child.gameObject);
+
+        }
         GetComponent<Rigidbody>().AddForce(Vector3.left * 0.0001f);
         
        // Physics.SyncTransforms();
@@ -107,15 +122,20 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
             lastPosition = Component.transform.position;
             yield return null;
         }
-        while (Vector3.Distance(lastPosition, Component.transform.position) > 0.001f);
+        while (Vector3.Distance(lastPosition, Component.transform.position) > 0.000001f);
 
         Debug.Log("Object fully settled at: " + Component.transform.position);
+
+        if (socket.selectTarget != null)
         CreateFakeComponent(Component, AttachPoint);
        
     }
 
     void CreateFakeComponent(GameObject Component, GameObject socket)
     {
+        if (socket.transform.Find("FakeComponent") != null)
+            Destroy(socket.transform.Find("FakeComponent").gameObject);
+
         GameObject FakeComponent = Instantiate(Component, Component.transform.position, Component.transform.rotation);
         FakeComponent.transform.SetParent(socket.transform);
         FakeComponent.GetComponent<Rigidbody>().isKinematic = true;
