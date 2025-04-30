@@ -117,13 +117,16 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
         XRSocketInteractor socket = AttachPoint.GetComponent<XRSocketInteractor>();
 
         Vector3 lastPosition;
+        Quaternion lastRotation;
         do
         {
             lastPosition = Component.transform.position;
+            lastRotation = Component.transform.rotation;
             yield return null;
         }
-        while (Vector3.Distance(lastPosition, Component.transform.position) > 0.000001f);
+        while (Vector3.Distance(lastPosition, Component.transform.position) > 0.001f || Quaternion.Angle(lastRotation, Component.transform.rotation) > 0.1f);
 
+        yield return new WaitForSeconds(0.05f);
         Debug.Log("Object fully settled at: " + Component.transform.position);
 
         if (socket.selectTarget != null)
@@ -141,6 +144,8 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
         FakeComponent.GetComponent<Rigidbody>().isKinematic = true;
         Physics.IgnoreCollision(FakeComponent.GetComponent<Collider>(), GetComponent<Collider>());
         Physics.IgnoreCollision(FakeComponent.GetComponent<Collider>(), Component.GetComponent<Collider>());
+        Physics.IgnoreCollision(Component.GetComponent<Collider>(), FakeComponent.GetComponent<Collider>());
+        //Destroy(Component.gameObject);
         Destroy(FakeComponent.GetComponent<XRGrabInteractable>());
         Destroy(FakeComponent.GetComponent<XRGeneralGrabTransformer>());
         Destroy(FakeComponent.GetComponent<Rigidbody>());

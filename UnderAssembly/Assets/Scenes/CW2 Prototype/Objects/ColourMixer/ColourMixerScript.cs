@@ -17,12 +17,19 @@ public class ColourMixerScript : MonoBehaviour
     int SelectedDyeIndex =0;
     float dyeUnitTimer = 0f;
     bool dyeUnitDispensedThisPull = false;
+    public List<DyeEntry> MixableColours = new List<DyeEntry>();
 
     // Start is called before the first frame update
     void Start()
     {
        GetComponent<Renderer>().material.color= MixRYB(0, 5, 1);
         Lever = transform.Find("PaintMixerLever").GetChild(0).GetComponent<MixerLeverScript>();
+
+        foreach (var entry in MixableColours)
+        {
+            if (!dyeCombinations.ContainsKey(entry.code))
+                dyeCombinations.Add(entry.code, entry.color);
+        }
 
         DyePullAmount = MaxDyePullAmount;
     }
@@ -166,25 +173,65 @@ public class ColourMixerScript : MonoBehaviour
 
 
 
-    public Dictionary<string, Color> dyeMixLookup = new Dictionary<string, Color>()
+    public Dictionary<string, Color> dyeCombinations = new Dictionary<string, Color>()         //OLD COLOUR DICTIONARY
     {
-    { "400", new Color(1f, 0, 0) }, // Crimson
-    { "040", new Color(1.0f, 0.96f, 0.31f) }, // Lemon
-    { "004", new Color(0.0f, 0.28f, 0.67f) }, // Cobalt
-    { "220", new Color(1.0f, 0.65f, 0.0f) },  // Orange
-    { "202", new Color(0.54f, 0.17f, 0.89f) }, // Violet
-    { "022", new Color(0.31f, 0.78f, 0.47f) }, // Emerald
-    { "112", new Color(.1f,.1f,.1f) }, // Black
-    { "121", new Color(0.5f, 0.5f, 0.0f) },    // Olive
-    { "211", new Color(0.55f, 0.27f, 0.07f) }, // Brown
-    { "103", new Color(0.29f, 0.0f, 0.51f) },  // Indigo
-    { "130", new Color(1.0f, 0.76f, 0.14f) },  // Marigold
-    { "310", new Color(0.89f, 0.26f, 0.20f) }, // Vermilion
-    { "101", new Color(0.5f, 0.0f, 0.13f) },   // Burgundy
-    { "111", new Color(0.5f, 0.5f, 0.5f) },    // Neutral Grey
-    { "210", new Color(1.0f, 0.75f, 0.8f) }    // Pink
+    //{ "400", new Color(1f, 0, 0) }, // Crimson
+    //{ "040", new Color(1.0f, 0.96f, 0.31f) }, // Lemon
+    //{ "004", new Color(0.0f, 0.28f, 0.67f) }, // Cobalt
+    //{ "220", new Color(1.0f, 0.65f, 0.0f) },  // Orange
+    //{ "202", new Color(0.54f, 0.17f, 0.89f) }, // Violet
+    //{ "022", new Color(0.31f, 0.78f, 0.47f) }, // Emerald
+    //{ "112", new Color(.1f,.1f,.1f) }, // Black
+    //{ "121", new Color(0.5f, 0.5f, 0.0f) },    // Olive
+    //{ "211", new Color(0.55f, 0.27f, 0.07f) }, // Brown
+    //{ "103", new Color(0.29f, 0.0f, 0.51f) },  // Indigo
+    //{ "130", new Color(1.0f, 0.76f, 0.14f) },  // Marigold
+    //{ "310", new Color(0.89f, 0.26f, 0.20f) }, // Vermilion
+    //{ "101", new Color(0.5f, 0.0f, 0.13f) },   // Burgundy
+    //{ "111", new Color(0.5f, 0.5f, 0.5f) },    // Neutral Grey
+    //{ "210", new Color(1.0f, 0.75f, 0.8f) }    // Pink
     };
+    [System.Serializable]
+    public class DyeEntry
+    {
+        public string code;
+        public Color color;
+    }
 
+
+//#if UNITY_EDITOR
+//    [ContextMenu("Initialize Dye List From Dictionary")]
+//    private void InitDyeListFromDictionary()
+//    {
+//        MixableColours = new List<DyeEntry>();
+
+//        Dictionary<string, Color> initialDyes = new Dictionary<string, Color>()
+//    {
+//        { "400", new Color(1f, 0, 0) }, // Crimson
+//        { "040", new Color(1.0f, 0.96f, 0.31f) }, // Lemon
+//        { "004", new Color(0.0f, 0.28f, 0.67f) }, // Cobalt
+//        { "220", new Color(1.0f, 0.65f, 0.0f) },  // Orange
+//        { "202", new Color(0.54f, 0.17f, 0.89f) }, // Violet
+//        { "022", new Color(0.31f, 0.78f, 0.47f) }, // Emerald
+//        { "112", new Color(.1f,.1f,.1f) }, // Black
+//        { "121", new Color(0.5f, 0.5f, 0.0f) },    // Olive
+//        { "211", new Color(0.55f, 0.27f, 0.07f) }, // Brown
+//        { "103", new Color(0.29f, 0.0f, 0.51f) },  // Indigo
+//        { "130", new Color(1.0f, 0.76f, 0.14f) },  // Marigold
+//        { "310", new Color(0.89f, 0.26f, 0.20f) }, // Vermilion
+//        { "101", new Color(0.5f, 0.0f, 0.13f) },   // Burgundy
+//        { "111", new Color(0.5f, 0.5f, 0.5f) },    // Neutral Grey
+//        { "210", new Color(1.0f, 0.75f, 0.8f) }    // Pink
+//    };
+
+//        foreach (var kvp in initialDyes)
+//        {
+//            MixableColours.Add(new DyeEntry { code = kvp.Key, color = kvp.Value });
+//        }
+
+//        UnityEditor.EditorUtility.SetDirty(this); // Mark object dirty to save the change
+//    }
+//#endif
     //void CalculateFinalColor()
     //{
     //    string key = $"{redUnits}{yellowUnits}{blueUnits}";
@@ -197,7 +244,7 @@ public class ColourMixerScript : MonoBehaviour
     public Color LookUpColour(int r, int y, int b)
     {
         string key = r.ToString() + y.ToString() + b.ToString();
-        if (dyeMixLookup.TryGetValue(key, out Color colour))
+        if (dyeCombinations.TryGetValue(key, out Color colour))
         {
             return colour;
         }

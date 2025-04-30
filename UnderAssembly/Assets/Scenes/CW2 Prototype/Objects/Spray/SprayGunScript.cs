@@ -18,9 +18,8 @@ public class SprayGunScript : MonoBehaviour
     public Color targetColor;
     float colorChangeSpeed = .5f;
     ParticleSystem particles;
-    public float Charge;
     float ConsumptionRate = 5;
-    GameObject ChargeObj;
+    SprayChargeScript ChargeObject;
     public Transform ChargeInsertionPoint;
 
     private void Awake()
@@ -36,7 +35,6 @@ public class SprayGunScript : MonoBehaviour
     void Start()
     {
         particles = transform.parent.transform.Find("Particle System").GetComponent<ParticleSystem>();
-        ChargeObj = transform.parent.Find("Charge").gameObject;
     }
 
     // Update is called once per frame
@@ -67,16 +65,20 @@ public class SprayGunScript : MonoBehaviour
 
         }
 
-        if (triggerValue > 0.5f && isHeld && Charge > 0)
+        if (triggerValue > 0.5f && isHeld)
         {
-            emission.enabled = true;
-            Charge -= Time.deltaTime *ConsumptionRate;
-
-            if (inFrontOfGun)
+            if(ChargeObject != null)
+            if (ChargeObject.ChargeLeft > 0)
             {
-                Color currentColor = TargetObj.GetComponent<ObjectBaseScript>().CurrentColour;
-                Color newColor = Color.Lerp(currentColor, targetColor, Time.deltaTime * colorChangeSpeed);
-                TargetObj.GetComponent<ObjectBaseScript>().CurrentColour = newColor;
+                emission.enabled = true;
+                ChargeObject.ChargeLeft -= Time.deltaTime * ConsumptionRate;
+
+                if (inFrontOfGun)
+                {
+                    Color currentColor = TargetObj.GetComponent<ObjectBaseScript>().CurrentColour;
+                    Color newColor = Color.Lerp(currentColor, targetColor, Time.deltaTime * colorChangeSpeed);
+                    TargetObj.GetComponent<ObjectBaseScript>().CurrentColour = newColor;
+                }
             }
         }
         else
@@ -85,7 +87,7 @@ public class SprayGunScript : MonoBehaviour
         }
         //  Debug.Log(isHeld && inFrontOfGun);
 
-        ChargeObj.transform.localScale = new Vector3(ChargeObj.transform.localScale.x,Charge/2000, ChargeObj.transform.localScale.z);
+        //ChargeObj.transform.localScale = new Vector3(ChargeObj.transform.localScale.x,Charge/2000, ChargeObj.transform.localScale.z);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -131,11 +133,22 @@ public class SprayGunScript : MonoBehaviour
     }
 
 
-    public void Refill(Color newColor)
+    public void AddNewCharge(XRSocketInteractor InsertionPoint)
     {
-        ChargeObj.GetComponent<Renderer>().materials[0].color = newColor;
+        GameObject InsertedCharge = InsertionPoint.selectTarget.gameObject;
+        Color newColor = Color.black;
+        if (InsertedCharge != null)
+        {
+            newColor = InsertedCharge.GetComponent<SprayChargeScript>().colour;
+            ChargeObject = InsertedCharge.GetComponent<SprayChargeScript>();
+
+        }
         targetColor = newColor;
-        Charge = 100;
+    }
+    public void RemoveCharge(XRSocketInteractor InsertionPoint)
+    {
+        ChargeObject = null;
+        targetColor = Color.clear;
     }
 }
 

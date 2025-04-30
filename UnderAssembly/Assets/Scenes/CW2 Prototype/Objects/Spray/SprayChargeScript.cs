@@ -32,6 +32,8 @@ public class SprayChargeScript : MonoBehaviour
     public XRBaseInteractor interactor; // Set this when grabbed
     private Vector3 lastControllerPosition;
 
+    public float ChargeLeft;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class SprayChargeScript : MonoBehaviour
         MixedFluid = transform.Find("MixedCharge").gameObject;
         MixedFluid.SetActive(false);
         MixerScript = GameObject.Find("ColourMixer").GetComponent<ColourMixerScript>();
+        ChargeLeft = 100;
 
         foreach (Transform t in transform.Find("DyeSegments").transform)
         {
@@ -60,15 +63,16 @@ public class SprayChargeScript : MonoBehaviour
         {
             if (Vector3.Distance(AttatchPoint.position, gunScript.ChargeInsertionPoint.transform.position) < 0.05)
             {
-                gunScript.Refill(colour);
-                Destroy(gameObject);
+               // gunScript.Refill(colour);
+                //Destroy(gameObject);
             };
             ScrollTexture(MixedFluid.GetComponent<Renderer>(), .25f, Vector2.right+Vector2.down);
 
         }
 
 
-
+        transform.Find("MixedCharge").GetComponent<Renderer>().material.SetFloat("_FillAmount", ChargeLeft / 100);
+        Debug.Log(ChargeLeft);
 
         if (interactor == null) return;
 
@@ -125,9 +129,10 @@ public class SprayChargeScript : MonoBehaviour
 
     public void MixDye()
     {
+        gameObject.layer = LayerMask.GetMask("SprayCharge");
         MixedFluid.SetActive(true);
         colour = MixerScript.LookUpColour(redAmount, yellowAmount, blueAmount);
-        MixedFluid.GetComponent<Renderer>().material.color = colour;
+        MixedFluid.GetComponent<Renderer>().material.SetColor("_PaintColour",colour);
         foreach (GameObject obj in DyeSegments)
         {
             obj.SetActive(false);

@@ -105,6 +105,7 @@ public class ObjectSpawner : MonoBehaviour
 
     public void SpawnSelectedPrefab()
     {
+        Debug.Log("PressedButton");
         if (m_prefabsToSpawn.Length > 0) //if the array isnt empty
         {
             if (m_prefabsToSpawn[m_prefabSelectIndex] != null) //if the first entry isnt a null reference then instance the object
@@ -155,7 +156,7 @@ public class ObjectSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        m_spawnPrefabButton.onClick.AddListener(() => SpawnSelectedPrefab());
+       // m_spawnPrefabButton.onClick.AddListener(() => SpawnSelectedPrefab());
         m_nextPrefabButton.onClick.AddListener(() => ChangeSelectedPrefab(true));
         m_previousPrefabButton.onClick.AddListener(() => ChangeSelectedPrefab(false));
 

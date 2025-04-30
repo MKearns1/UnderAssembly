@@ -37,9 +37,9 @@ public class GeneralScript : MonoBehaviour
 
         foreach (GameObject g in GameObject.FindGameObjectsWithTag("BaseObject"))
         {
-            foreach( GameObject snappoint in g.GetComponent<ObjectBaseScript>().SnapPoints)
+            //foreach( GameObject snappoint in g.GetComponent<ObjectBaseScript>().SnapPoints)
             {
-                productSnapPoints.Add(snappoint.transform);
+                //productSnapPoints.Add(snappoint.transform);
 
             }
         }

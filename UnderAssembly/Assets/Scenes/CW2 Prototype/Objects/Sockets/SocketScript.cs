@@ -9,7 +9,7 @@ public class CustomSocketInteractor : XRSocketInteractor
     [Header("Custom Hover Materials")]
     public Material AllowedHoverMaterial;
     public Material ForbiddenHoverMaterial;
-
+    public LayerMask AllowedLayers;
     //[SerializeField] private Material allowedHoverMaterialInstance;
     //[SerializeField] private Material forbiddenHoverMaterialInstance;
 
@@ -38,7 +38,7 @@ public class CustomSocketInteractor : XRSocketInteractor
     private bool IsInteractableAllowed(IXRInteractable interactable)
     {
         var obj = interactable.transform.gameObject;
-        if (obj.GetComponent<ComponentScript>() != null)
+        if (obj.GetComponent<ComponentScript>() != null && (AllowedLayers.value & (1 << obj.layer)) != 0)
         {
             foreach (string name in EnabledObjects)
             {
@@ -46,8 +46,11 @@ public class CustomSocketInteractor : XRSocketInteractor
                 { return true; }
             }
         }
-        // Example: allow based on Tag
-        return false;
+        if (obj.GetComponent<SprayChargeScript>() != null && (AllowedLayers.value & (1 << obj.layer)) != 0)
+        { return true;}
+
+            // Example: allow based on Tag
+            return false;
     }
 
     protected override Material GetHoveredInteractableMaterial(IXRHoverInteractable interactable)
@@ -65,5 +68,32 @@ public class CustomSocketInteractor : XRSocketInteractor
                ((!hasSelection && !interactable.isSelected) ||
                 (IsSelecting(interactable) && interactable.interactorsSelecting.Count == 1));
     }
+
+
+    public override bool CanHover(IXRHoverInteractable interactable)
+    {
+        var selectable = interactable as IXRSelectInteractable;
+        if (selectable != null)
+        {
+            var go = selectable.transform.gameObject;
+
+            if ((AllowedLayers.value & (1 << go.layer)) == 0)
+                return false;
+
+            Debug.Log(go.layer);
+            foreach (var interactor in selectable.interactorsSelecting)
+            {
+                // If another socket is selecting it, don't allow hover
+                if (interactor is XRSocketInteractor && interactor != this)
+                    return false;
+            }
+            
+        }
+
+        return base.CanHover(interactable);
+    }
+
+
+
 
 }

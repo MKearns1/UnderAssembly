@@ -168,7 +168,7 @@ MonoBehaviour:
       m_Calls: []
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
+  m_UseDynamicAttach: 1
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
@@ -231,8 +231,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.025, y: 0.13, z: 0.13}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.13022561, y: 0.02466154, z: 0.13}
+  m_Center: {x: -0.00005632639, y: -0.00000004113341, z: 0}
 --- !u!114 &3072719082586394134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +408,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f04e0d71ca07e9347abca138eca86d96,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f04e0d71ca07e9347abca138eca86d96,
         type: 3}
@@ -423,7 +423,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f04e0d71ca07e9347abca138eca86d96,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f04e0d71ca07e9347abca138eca86d96,
         type: 3}
@@ -438,7 +438,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f04e0d71ca07e9347abca138eca86d96,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f04e0d71ca07e9347abca138eca86d96,
         type: 3}

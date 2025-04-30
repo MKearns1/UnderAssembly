@@ -37,12 +37,15 @@ public class AssemblyScript : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-       // onLine = true;
-        item = other.gameObject;
-        // Debug.Log(other.name);
+        if (ON)
+        {
+            // onLine = true;
+            item = other.gameObject;
+            // Debug.Log(other.name);
 
-        if (other.GetComponent<IInteractable>() != null)
-        other.GetComponent<IInteractable>().SetOnAssembly(true);
+            if (other.GetComponent<IInteractable>() != null)
+                other.GetComponent<IInteractable>().SetOnAssembly(true);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
