@@ -13,7 +13,10 @@ public class GeneralScript : MonoBehaviour
     public GameObject Assembly;
     public Transform NewObjectSpawn;
     public List<GameObject> ObjectsToSpawn;
+    public List<List<GameObject>> TemplatePrefabs;
     Vector3[] spawnRotations = { new Vector3(285.08551f, 270.003845f, 179.999817f), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0) };
+    public ObjectTemplateScript NewProductTemplate;
+    public List<ProductType> templates = new List<ProductType>();
 
     public InputActionReference input;
     void Awake()
@@ -25,42 +28,31 @@ public class GeneralScript : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
             return;
         }
-     
+
     }
 
     void Start()
     {
-        //CurrentProduct = GameObject.Find("RobotBodyPrefab");
-
-        foreach (GameObject g in GameObject.FindGameObjectsWithTag("BaseObject"))
-        {
-            //foreach( GameObject snappoint in g.GetComponent<ObjectBaseScript>().SnapPoints)
-            {
-                //productSnapPoints.Add(snappoint.transform);
-
-            }
-        }
+        //GameObject.Find("EvaluatorTrigger").GetComponent<EvaluatorScript>();
+        SpawnNewObject();
     }
 
     public void SpawnNewObject()
     {
-       if (CurrentProduct == null)
+        if (CurrentProduct == null)
         {
-            int randint = Random.Range(0, ObjectsToSpawn.Count);
-            Quaternion rotation = Quaternion.Euler(spawnRotations[randint]);
-            CurrentProduct = Instantiate(ObjectsToSpawn[randint], NewObjectSpawn.position, rotation);
-            Debug.Log(randint);
-            if (CurrentProduct != null && CurrentProduct.transform.childCount > 1)
-            {
-                foreach (Transform t in CurrentProduct.transform.GetChild(1))
-                {
-                    productSnapPoints.Add(t);
-                }
-            }
+
         }
+
+        int randint = Random.Range(0, ObjectsToSpawn.Count);
+       // Quaternion rotation = Quaternion.Euler(spawnRotations[randint]);
+        CurrentProduct = Instantiate(ObjectsToSpawn[randint], NewObjectSpawn.position, Quaternion.identity);
+        int randvariant = Random.Range(0, templates[randint].Variants.Count);
+        GameObject DesiredTemplate = Instantiate(templates[randint].Variants[randvariant].Prefab,Vector3.zero,Quaternion.identity);
+        NewProductTemplate = DesiredTemplate.GetComponent<ObjectTemplateScript>();
 
     }
     private void Update()
@@ -68,19 +60,31 @@ public class GeneralScript : MonoBehaviour
 
         for (int i = 0; i < productSnapPoints.Count; i++)
         {
-            if(productSnapPoints[i] == null)
+            if (productSnapPoints[i] == null)
             {
                 productSnapPoints.RemoveAt(i);
             }
         }
 
-      
-       // input.ToInputAction().performed += PressedPrimaryButton;
+
+        // input.ToInputAction().performed += PressedPrimaryButton;
     }
 
     private void PressedPrimaryButton(InputAction.CallbackContext context)
     {
         Debug.Log(context.performed);
-       // throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
+    }
+
+    [System.Serializable]
+    public class ProductVariants
+    {
+        public GameObject Prefab;
+
+    }
+    [System.Serializable]
+    public class ProductType
+    {
+        public List<ProductVariants> Variants;
     }
 }

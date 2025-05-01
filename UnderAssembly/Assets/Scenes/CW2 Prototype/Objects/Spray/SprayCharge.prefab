@@ -212,7 +212,6 @@ GameObject:
   - component: {fileID: 2602917188618796015}
   - component: {fileID: 4676526343716874}
   - component: {fileID: 8942771537343113722}
-  - component: {fileID: 2545968583897974592}
   m_Layer: 0
   m_Name: Base
   m_TagString: ColourChargeCap
@@ -285,27 +284,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2545968583897974592
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5239362544296308448}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 2, z: 1.0000004}
-  m_Center: {x: 0.00000005960465, y: 0, z: -0.00000008940698}
 --- !u!1 &5765128395845209087
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +295,6 @@ GameObject:
   - component: {fileID: 8524121417052271062}
   - component: {fileID: 4837428789182956722}
   - component: {fileID: 3856811614657290077}
-  - component: {fileID: 4882416289067235750}
   m_Layer: 0
   m_Name: Glass
   m_TagString: Untagged
@@ -390,27 +367,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4882416289067235750
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5765128395845209087}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1.8481423, z: 1.0000005}
-  m_Center: {x: -0.00000019868219, y: -0.0759282, z: -0.000000099341094}
 --- !u!1 &5784357726514976073
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +764,7 @@ GameObject:
   - component: {fileID: 6288815461065746701}
   - component: {fileID: 7266311361474069247}
   - component: {fileID: 6245444727021521649}
+  - component: {fileID: 5360264639856690254}
   m_Layer: 0
   m_Name: SprayCharge
   m_TagString: Untagged
@@ -1037,6 +994,27 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!65 &5360264639856690254
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8100333754879807196}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 2.6000705, z: 1.5}
+  m_Center: {x: 0, y: -0.26989645, z: 0}
 --- !u!1 &8845777258562134196
 GameObject:
   m_ObjectHideFlags: 0

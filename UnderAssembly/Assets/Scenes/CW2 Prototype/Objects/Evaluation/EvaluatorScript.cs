@@ -5,6 +5,11 @@ using UnityEngine;
 public class EvaluatorScript : MonoBehaviour
 {
     int CorrectlyAssembled;
+    GameObject AssembledProduct;
+    ObjectTemplateScript CurrentTemplate;
+    ObjectBaseScript AssembledObjectScript;
+    //List<GameObject> CorrectSocketPlacement;
+    public List<string> CorrectSocketPlacement;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +28,9 @@ public class EvaluatorScript : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.red;
         }
+
+        CurrentTemplate = GeneralScript.Instance.NewProductTemplate;
+        CorrectSocketPlacement = CurrentTemplate.CorrectSocketObject;
     }
 
 
@@ -32,14 +40,30 @@ public class EvaluatorScript : MonoBehaviour
         {
             if(other.GetComponent<ObjectBaseScript>() != null)
             {
-
-                if(other.GetComponent<ObjectBaseScript>().AllSnapsCorrect && other.GetComponent<ObjectBaseScript>().CorrectColour)
-                {
-                    CorrectlyAssembled++;
-                }
-
+                AssembledObjectScript = other.GetComponent<ObjectBaseScript>();
+                EvaluateProduct();
                 Destroy(other.gameObject);
             }
         }
+    }
+
+    bool EvaluateProduct()
+    {
+        for (int i = 0; i < AssembledObjectScript.Sockets.Count; i++)
+        {
+            if (AssembledObjectScript.Sockets[i].transform.Find("FakeComponent") != null)
+            {
+                if(AssembledObjectScript.Sockets[i].transform.Find("FakeComponent").GetComponent<ComponentScript>().ObjectName != CurrentTemplate.CorrectSocketObject[i])
+                {
+                    return false;
+                }
+            }
+            else if (CurrentTemplate.CorrectSocketObject[i] != "Empty")
+            {
+                return false ;
+            }
+           
+        }
+        return true;
     }
 }

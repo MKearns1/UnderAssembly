@@ -80,7 +80,7 @@ public class CustomSocketInteractor : XRSocketInteractor
             if ((AllowedLayers.value & (1 << go.layer)) == 0)
                 return false;
 
-            Debug.Log(go.layer);
+          //  Debug.Log(go.layer);
             foreach (var interactor in selectable.interactorsSelecting)
             {
                 // If another socket is selecting it, don't allow hover

@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &255550408727403397
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 34743455526479196, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_Name
+      value: WoodenLeg
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940336768721454698, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_Name
+      value: WoodenLeg
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902236164516709741, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_Name
+      value: WoodenLeg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182733965113046995, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_Name
+      value: WoodenLeg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3302954833980959126, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_Name
+      value: ChairTemplate1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414390288019002132, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_Name
+      value: WoodenLeg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.2433383
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.8445308
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.0134277
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040367263775696364, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_Name
+      value: WoodenLeg
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593428939101915454, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_Name
+      value: WoodenLeg
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469155656434587124, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      propertyPath: m_Name
+      value: WoodenLeg
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5377655962522345695, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 4126936879256455041, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 6728993371938499350, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 8462058958776085752, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 38134629554783368, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 4232136512496013300, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 3163065357448856168, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 2216429893315369867, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 9034363966703538299, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 6093407279417940581, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 1568736738483669694, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 7912609964183802323, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 12086931038678147, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 8321030035919154934, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 4001784305477837341, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 2556858553623432939, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 2213813489690829235, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 9094879159988614752, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 5133013572498072015, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 9127137420844227937, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 6132184057106976646, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 5080461914870639802, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 2008924610700326236, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 5319607432820396724, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 7107722979974509887, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 2260210433357251438, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 1854569750602924389, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 8481143702184089657, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    - {fileID: 5438564798496976044, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3302954833980959126, guid: f0b57cd2cbb74654da85602c128c6ddf,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6152324529985313374}
+  m_SourcePrefab: {fileID: 100100000, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+--- !u!1 &3340991793935102483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3302954833980959126, guid: f0b57cd2cbb74654da85602c128c6ddf,
+    type: 3}
+  m_PrefabInstance: {fileID: 255550408727403397}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6152324529985313374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3340991793935102483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2475b0c359f9575428d1f7a95c3c520f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TemplateTitle: Standard Chair
+  CorrectSocketObject: []

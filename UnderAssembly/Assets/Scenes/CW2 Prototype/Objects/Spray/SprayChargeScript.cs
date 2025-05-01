@@ -61,18 +61,18 @@ public class SprayChargeScript : MonoBehaviour
 
         if (isMixed)
         {
-            if (Vector3.Distance(AttatchPoint.position, gunScript.ChargeInsertionPoint.transform.position) < 0.05)
+            //if (Vector3.Distance(AttatchPoint.position, gunScript.ChargeInsertionPoint.transform.position) < 0.05)
             {
                // gunScript.Refill(colour);
                 //Destroy(gameObject);
             };
-            ScrollTexture(MixedFluid.GetComponent<Renderer>(), .25f, Vector2.right+Vector2.down);
+          //  ScrollTexture(MixedFluid.GetComponent<Renderer>(), .25f, Vector2.right+Vector2.down);
 
         }
 
 
         transform.Find("MixedCharge").GetComponent<Renderer>().material.SetFloat("_FillAmount", ChargeLeft / 100);
-        Debug.Log(ChargeLeft);
+        //Debug.Log(ChargeLeft);
 
         if (interactor == null) return;
 
@@ -129,7 +129,7 @@ public class SprayChargeScript : MonoBehaviour
 
     public void MixDye()
     {
-        gameObject.layer = LayerMask.GetMask("SprayCharge");
+        gameObject.layer = 11;
         MixedFluid.SetActive(true);
         colour = MixerScript.LookUpColour(redAmount, yellowAmount, blueAmount);
         MixedFluid.GetComponent<Renderer>().material.SetColor("_PaintColour",colour);

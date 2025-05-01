@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4633911066151196740
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2476552941300661887, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_Name
+      value: NuclearBattery
+      objectReference: {fileID: 0}
+    - target: {fileID: 3302954833980959126, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_Name
+      value: JackHammerTemplate2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.155166
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.8445308
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.12561
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3532509746478500138, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696690755944988125, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      propertyPath: m_Name
+      value: NuclearBattery
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 780970228836745772, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 7167088606315442497, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 1965960275870684402, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 8981494774429410186, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 1507934799618290167, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 3867786432792751797, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 8326846369153688536, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 3241261224028642638, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 8200102926717517413, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 7107722979974509887, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 2260210433357251438, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 1854569750602924389, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 8481143702184089657, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 5438564798496976044, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    - {fileID: 2208702676637669260, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3302954833980959126, guid: 47cd2414806558242bea8d61818222e3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2416954269084191793}
+  m_SourcePrefab: {fileID: 100100000, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+--- !u!1 &7897209813160538578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3302954833980959126, guid: 47cd2414806558242bea8d61818222e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4633911066151196740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2416954269084191793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897209813160538578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2475b0c359f9575428d1f7a95c3c520f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TemplateTitle: Nuclear-Powered Jackhammer
+  CorrectSocketObject: []

@@ -8,18 +8,16 @@ using UnityEngine.XR.Interaction.Toolkit.Transformers;
 
 public class ObjectBaseScript : MonoBehaviour, IInteractable
 {
-    public GameObject[] SnapPoints;
-    public bool AllSnapsCorrect;
     public GameObject ObjectColourToChange;
+    GameObject Triggers;
     public Color[] PossibleColors;
     public Color DesiredColour;
     public Color CurrentColour;
     public bool CorrectColour;
     bool OnAssemblyLine;
     public int MaterialIndex;
-    public List<GameObject> AttachedObjects;
-
-    float checkSocketsTimer;
+    public Dictionary<string ,GameObject> AttachedObjects = new Dictionary<string, GameObject>();   // Only use for this is to just re enable collision for component after removal.
+    public List<GameObject> Sockets;
 
     // Start is called before the first frame update
     void Start()
@@ -27,50 +25,25 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
         float randomNum = Random.Range(0, PossibleColors.Length);
         // randomNum = ((int)randomNum);
         DesiredColour = PossibleColors[(int)(randomNum)];
-
+        Triggers = transform.Find("Triggers").gameObject;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
-       
+        for (int i = 0; i < Triggers.transform.childCount; i++)
+        {
+            Sockets.Add(Triggers.transform.GetChild(i).gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        AllSnapsCorrect = true;
-        for (int i = 0; i < SnapPoints.Length; i++)
-        {
-          //  if (!SnapPoints[i].GetComponent<SnapTriggerScript>().Filled )
-            {
-               // AllSnapsCorrect = false;
-                break;
-            }
-        }
-
-
-        if (ColorsAreEqual(CurrentColour, DesiredColour))
-        {
-            CorrectColour = true;
-        }
-        else
-        {
-            CorrectColour = false;
-
-        }
+        CorrectColour = (ColorsAreEqual(CurrentColour, DesiredColour));
+   
         if (OnAssemblyLine)
         {
             transform.position += Vector3.right * Time.deltaTime * GameObject.Find("Assembly (2)").transform.GetChild(2).GetComponent<AssemblyScript>().AssemblySpeed/20;
         }
 
          ObjectColourToChange.GetComponent<MeshRenderer>().materials[MaterialIndex].color = CurrentColour;
-        // Debug.Log("snaps " + AllSnapsCorrect);
-        // Debug.Log("correctcolour " + CorrectColour);
-        checkSocketsTimer += Time.deltaTime;
-        if (checkSocketsTimer > 1)
-        {
-            foreach(Transform socket in transform.Find("Triggers").transform)
-            {
-
-            }
-        }
     }
 
     bool ColorsAreEqual(Color a, Color b, float tolerance = 0.01f)
@@ -92,20 +65,27 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
     {
         XRSocketInteractor socket = AttachPoint.GetComponent<XRSocketInteractor>();
         GameObject Component = socket.selectTarget.gameObject;
-        AttachedObjects.Add(Component);
-
+        AttachedObjects.Add(AttachPoint.gameObject.name,Component);
         StartCoroutine(WaitUntilSettled(Component, AttachPoint));
             
     }
 
     public void OnRemoveComponent(GameObject AttachPoint)
     {
+        XRSocketInteractor socket = AttachPoint.GetComponent<XRSocketInteractor>();
+        GameObject RemovedComponent;
+        AttachedObjects.TryGetValue(AttachPoint.gameObject.name, out RemovedComponent);
+
         foreach (Transform child in AttachPoint.transform)
         {
             if(child.name == "FakeComponent")
                 Destroy(child.gameObject);
 
         }
+        Physics.IgnoreCollision(GetComponent<Collider>(), RemovedComponent.GetComponent<Collider>(), false);
+        Physics.IgnoreCollision(RemovedComponent.GetComponent<Collider>(), GetComponent<Collider>(), false);
+        AttachedObjects.Remove(AttachPoint.name);
+
         GetComponent<Rigidbody>().AddForce(Vector3.left * 0.0001f);
         
        // Physics.SyncTransforms();
@@ -142,8 +122,9 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
         GameObject FakeComponent = Instantiate(Component, Component.transform.position, Component.transform.rotation);
         FakeComponent.transform.SetParent(socket.transform);
         FakeComponent.GetComponent<Rigidbody>().isKinematic = true;
-        Physics.IgnoreCollision(FakeComponent.GetComponent<Collider>(), GetComponent<Collider>());
         Physics.IgnoreCollision(FakeComponent.GetComponent<Collider>(), Component.GetComponent<Collider>());
+        Physics.IgnoreCollision(GetComponent<Collider>(), Component.GetComponent<Collider>());
+        Physics.IgnoreCollision(Component.GetComponent<Collider>(), GetComponent<Collider>());
         Physics.IgnoreCollision(Component.GetComponent<Collider>(), FakeComponent.GetComponent<Collider>());
         //Destroy(Component.gameObject);
         Destroy(FakeComponent.GetComponent<XRGrabInteractable>());

@@ -211,10 +211,15 @@ MonoBehaviour:
   - SmallWheel
   - RobotLeg
   - RobotHead
+  - Thruster
+  - WoodenLeg
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
     type: 2}
+  AllowedLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &2952635653924101564
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,10 +463,14 @@ MonoBehaviour:
   - RobotLeg
   - RobotHead
   - RobotArm
+  - WoodenLeg
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
     type: 2}
+  AllowedLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3302954833980959126
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +558,7 @@ MonoBehaviour:
   CurrentColour: {r: 0.72156864, g: 0.72156864, b: 0.72156864, a: 1}
   CorrectColour: 0
   MaterialIndex: 3
-  AttachedObjects: []
+  Sockets: []
 --- !u!65 &1854569750602924389
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -959,10 +968,14 @@ MonoBehaviour:
   - RobotLeg
   - RobotHead
   - RobotArm
+  - WoodenLeg
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
     type: 2}
+  AllowedLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &5063802693181083209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,10 +1317,15 @@ MonoBehaviour:
   - RobotLeg
   - RobotHead
   - RobotArm
+  - WoodenLeg
+  - Thruster
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
     type: 2}
+  AllowedLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &8099062473717800454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,10 +1538,15 @@ MonoBehaviour:
   - RobotLeg
   - RobotHead
   - RobotArm
+  - WoodenLeg
+  - Thruster
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
     type: 2}
+  AllowedLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &8504545287212349940
 GameObject:
   m_ObjectHideFlags: 0

@@ -173,33 +173,19 @@ public class ColourMixerScript : MonoBehaviour
 
 
 
-    public Dictionary<string, Color> dyeCombinations = new Dictionary<string, Color>()         //OLD COLOUR DICTIONARY
+    public Dictionary<string, Color> dyeCombinations = new Dictionary<string, Color>()         
     {
-    //{ "400", new Color(1f, 0, 0) }, // Crimson
-    //{ "040", new Color(1.0f, 0.96f, 0.31f) }, // Lemon
-    //{ "004", new Color(0.0f, 0.28f, 0.67f) }, // Cobalt
-    //{ "220", new Color(1.0f, 0.65f, 0.0f) },  // Orange
-    //{ "202", new Color(0.54f, 0.17f, 0.89f) }, // Violet
-    //{ "022", new Color(0.31f, 0.78f, 0.47f) }, // Emerald
-    //{ "112", new Color(.1f,.1f,.1f) }, // Black
-    //{ "121", new Color(0.5f, 0.5f, 0.0f) },    // Olive
-    //{ "211", new Color(0.55f, 0.27f, 0.07f) }, // Brown
-    //{ "103", new Color(0.29f, 0.0f, 0.51f) },  // Indigo
-    //{ "130", new Color(1.0f, 0.76f, 0.14f) },  // Marigold
-    //{ "310", new Color(0.89f, 0.26f, 0.20f) }, // Vermilion
-    //{ "101", new Color(0.5f, 0.0f, 0.13f) },   // Burgundy
-    //{ "111", new Color(0.5f, 0.5f, 0.5f) },    // Neutral Grey
-    //{ "210", new Color(1.0f, 0.75f, 0.8f) }    // Pink
     };
     [System.Serializable]
     public class DyeEntry
     {
+        public string name;
         public string code;
         public Color color;
     }
 
 
-//#if UNITY_EDITOR
+//#if UNITY_EDITOR                                                                                //USED ONCE TO GET DICTIONARY IN INSPECTOR
 //    [ContextMenu("Initialize Dye List From Dictionary")]
 //    private void InitDyeListFromDictionary()
 //    {

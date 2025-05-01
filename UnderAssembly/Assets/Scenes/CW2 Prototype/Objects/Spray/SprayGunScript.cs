@@ -144,6 +144,7 @@ public class SprayGunScript : MonoBehaviour
 
         }
         targetColor = newColor;
+        Physics.IgnoreCollision(InsertedCharge.GetComponent<Collider>(),transform.parent.GetComponent<Collider>());
     }
     public void RemoveCharge(XRSocketInteractor InsertionPoint)
     {

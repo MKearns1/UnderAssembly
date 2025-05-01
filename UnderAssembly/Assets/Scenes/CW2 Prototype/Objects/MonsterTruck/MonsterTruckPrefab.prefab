@@ -210,6 +210,7 @@ MonoBehaviour:
   - BigWheel
   - SmallWheel
   - RobotLeg
+  - Thruster
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
@@ -304,7 +305,7 @@ MonoBehaviour:
   CurrentColour: {r: 0.72156864, g: 0.72156864, b: 0.72156864, a: 1}
   CorrectColour: 0
   MaterialIndex: 5
-  AttachedObjects: []
+  Sockets: []
 --- !u!65 &1854569750602924389
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -374,7 +375,7 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
-  m_SelectMode: 0
+  m_SelectMode: 1
   m_FocusMode: 1
   m_CustomReticle: {fileID: 0}
   m_AllowGazeInteraction: 0
@@ -867,6 +868,7 @@ MonoBehaviour:
   - BigWheel
   - SmallWheel
   - RobotLeg
+  - Thruster
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
@@ -1582,6 +1584,7 @@ MonoBehaviour:
   - BigWheel
   - SmallWheel
   - RobotLeg
+  - Thruster
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
@@ -1799,6 +1802,7 @@ MonoBehaviour:
   - BigWheel
   - SmallWheel
   - RobotLeg
+  - Thruster
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
