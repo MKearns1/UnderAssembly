@@ -8,12 +8,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class RecipeBookScript : MonoBehaviour
 {
-    Animator Animator;
+    Animator animator;
     bool open;
     bool isHeld;
     private XRGrabInteractable grabInteractable;
     ColourMixerScript colourMixerScript;
-    public List<Page> pages;
+    public List<GameObject> pages;
+    Transform Pages;
     Transform ColourEntry;
     public class Page
     {
@@ -25,7 +26,7 @@ public class RecipeBookScript : MonoBehaviour
     void Start()
     {
         colourMixerScript = GameObject.Find("ColourMixer").GetComponent<ColourMixerScript>();
-        Animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         grabInteractable = GetComponent<XRGrabInteractable>();
 
@@ -87,7 +88,7 @@ public class RecipeBookScript : MonoBehaviour
         }
         Destroy(ColourEntry.gameObject);
 
-        GameObject.Find("PageText").GetComponent<TextMeshPro>().text = pagetext;
+        //GameObject.Find("PageText").GetComponent<TextMeshPro>().text = pagetext;
     }
 
     // Update is called once per frame
@@ -97,7 +98,7 @@ public class RecipeBookScript : MonoBehaviour
         {
             if (!open)
             {
-                Animator.SetBool("Open", true);
+                animator.SetBool("Open", true);
                 open = true;
                 Debug.Log("OPpen");
             }
@@ -106,10 +107,21 @@ public class RecipeBookScript : MonoBehaviour
         {
             if (open)
             {
-                Animator.SetBool("Open", false);
+                animator.SetBool("Open", false);
                 open = false;
                 Debug.Log("OPpen");
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("TurnRight");
+            Debug.Log("dfsd");
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            animator.SetTrigger("TurnLeft");
+            Debug.Log("dfsd");
         }
     }
 
@@ -129,11 +141,26 @@ public class RecipeBookScript : MonoBehaviour
     {
         if (Dir == 1)
         {
+            animator.SetTrigger("TurnRight");
+            Pages.GetChild(2).gameObject.SetActive(true);
 
         }
         else if (Dir == -1)
         {
+            animator.SetTrigger("TurnLeft");
+            Pages.GetChild(0).gameObject.SetActive(true);
 
+        }
+    }
+    void HidePageText(int Direction)
+    {
+        if ((Direction == 1))
+        {
+            //Pages.GetChild(0).gameObject.SetActive(false);
+        }
+        else if ((Direction == -1))
+        {
+          //  Pages.GetChild(2).gameObject.SetActive(false);
         }
     }
 }
