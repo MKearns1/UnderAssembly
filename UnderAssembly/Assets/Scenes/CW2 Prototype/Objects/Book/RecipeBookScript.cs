@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class RecipeBookScript : MonoBehaviour
@@ -16,6 +17,9 @@ public class RecipeBookScript : MonoBehaviour
     public List<GameObject> pages;
     Transform Pages;
     Transform ColourEntry;
+    public InputActionProperty triggerAction;
+    public bool isTurningPage;
+    bool TriggerPressed;
     public class Page
     {
         string title;
@@ -25,6 +29,7 @@ public class RecipeBookScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Pages = transform.Find("Pages");
         colourMixerScript = GameObject.Find("ColourMixer").GetComponent<ColourMixerScript>();
         animator = GetComponent<Animator>();
 
@@ -94,6 +99,33 @@ public class RecipeBookScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float triggerValue = triggerAction.action.ReadValue<float>();
+        if(triggerValue > .5f && !TriggerPressed)
+        { 
+            if(isHeld)
+            {
+                Debug.Log(isTurningPage);
+
+                if (Pages.GetComponent<Animator>().GetInteger("Side") == -1 && !isTurningPage)
+                {
+                    isTurningPage = true;
+                    TurnPage(1);
+                }
+                else if (!isTurningPage)
+                {
+                    isTurningPage = true;
+                    TurnPage(-1);
+                }
+            }
+            Debug.Log(Pages.GetComponent<Animator>().GetInteger("Side"));
+            Debug.Log(isTurningPage);
+                TriggerPressed = true; 
+        }
+        else if (triggerValue <.5f && TriggerPressed)
+        {
+            TriggerPressed = false;
+        }
+
         if (isHeld)
         {
             if (!open)
@@ -102,6 +134,16 @@ public class RecipeBookScript : MonoBehaviour
                 open = true;
                 Debug.Log("OPpen");
             }
+            else
+            {
+                if (TriggerPressed)
+                {
+                 
+                   
+                }
+            }
+            Pages.gameObject.SetActive(true);
+
         }
         else
         {
@@ -111,17 +153,27 @@ public class RecipeBookScript : MonoBehaviour
                 open = false;
                 Debug.Log("OPpen");
             }
+            Pages.gameObject.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            animator.SetTrigger("TurnRight");
-            Debug.Log("dfsd");
+            TurnPage(-1);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            animator.SetTrigger("TurnLeft");
-            Debug.Log("dfsd");
+            TurnPage(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (Pages.GetComponent<Animator>().GetInteger("Side") == -1)
+            {
+                TurnPage(-1);
+            }
+            else
+            {
+                TurnPage(1);
+            }
         }
     }
 
@@ -141,16 +193,29 @@ public class RecipeBookScript : MonoBehaviour
     {
         if (Dir == 1)
         {
-            animator.SetTrigger("TurnRight");
-            Pages.GetChild(2).gameObject.SetActive(true);
+          //  Pages.GetComponent<Animator>().ResetTrigger("TurnRight");
+            Pages.GetComponent<Animator>().SetTrigger("TurnRight");
+            Pages.GetComponent<Animator>().ResetTrigger("TurnLeft");
+            Pages.GetComponent<Animator>().SetInteger("Side",-1);
+            //Pages.GetChild(2).gameObject.active = false;
 
         }
         else if (Dir == -1)
         {
-            animator.SetTrigger("TurnLeft");
-            Pages.GetChild(0).gameObject.SetActive(true);
+          //  Pages.GetComponent<Animator>().ResetTrigger("TurnLeft");
+            Pages.GetComponent<Animator>().SetTrigger("TurnLeft");
+            Pages.GetComponent<Animator>().ResetTrigger("TurnRight");
+            Pages.GetComponent<Animator>().SetInteger("Side", 1);
+
+           // Pages.GetChild(0).gameObject.SetActive(true);
 
         }
+    }
+
+    public void TurnPageComplete()
+    {
+        Debug.Log("SDFKJSHDJFHSKJDFHS");
+        isTurningPage = false;
     }
     void HidePageText(int Direction)
     {
