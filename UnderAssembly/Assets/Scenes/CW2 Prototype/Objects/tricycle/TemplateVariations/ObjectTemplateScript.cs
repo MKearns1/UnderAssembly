@@ -7,6 +7,7 @@ public class ObjectTemplateScript : MonoBehaviour
 {
     Transform Trigger;
     public string TemplateTitle;
+    public string BaseType;
     public List<string> CorrectSocketObject;
     ColourMixerScript colourMixerScript;
     public Color Colour;

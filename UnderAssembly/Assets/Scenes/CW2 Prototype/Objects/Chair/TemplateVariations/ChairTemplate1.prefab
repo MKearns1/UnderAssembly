@@ -160,4 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TemplateTitle: Standard Chair
+  BaseType: Chair
   CorrectSocketObject: []
+  Colour: {r: 0, g: 0, b: 0, a: 0}
+  ColourName: 

@@ -41,7 +41,7 @@ public class GeneralScript : MonoBehaviour
     {
         //GameObject.Find("EvaluatorTrigger").GetComponent<EvaluatorScript>();
         SpawnNewObject();
-        MonitorProductTextMesh = GameObject.Find("DisplayTitleText").GetComponent<UnityEngine.UI.Text>();
+        MonitorProductTextMesh = GameObject.Find("ProductName").transform.GetChild(0).GetComponent<UnityEngine.UI.Text>();
     }
 
     public void SpawnNewObject()
@@ -70,7 +70,7 @@ public class GeneralScript : MonoBehaviour
             }
         }
 
-        MonitorProductTextMesh.text = "Directive: " + NewProductTemplate.TemplateTitle;
+        MonitorProductTextMesh.text = NewProductTemplate.TemplateTitle.ToUpper();
 
         // input.ToInputAction().performed += PressedPrimaryButton;
     }

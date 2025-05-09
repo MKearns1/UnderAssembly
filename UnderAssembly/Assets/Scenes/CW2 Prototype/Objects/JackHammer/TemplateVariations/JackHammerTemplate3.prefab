@@ -121,4 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TemplateTitle: Robot-Operated Jackhammer
+  BaseType: Jackhammer
   CorrectSocketObject: []
+  Colour: {r: 0, g: 0, b: 0, a: 0}
+  ColourName: 
