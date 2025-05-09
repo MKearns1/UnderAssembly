@@ -165,12 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db6b482573c576478e282e5d7c48552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SnapPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  AllSnapsCorrect: 0
   ObjectColourToChange: {fileID: 4446653283427165742}
   PossibleColors:
   - {r: 1, g: 0, b: 0, a: 0}
@@ -182,6 +176,7 @@ MonoBehaviour:
   CurrentColour: {r: 0.5320754, g: 0.5320754, b: 0.5320754, a: 1}
   CorrectColour: 0
   MaterialIndex: 0
+  Sockets: []
 --- !u!65 &1854569750602924389
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -245,13 +240,17 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders:
   - {fileID: 1854569750602924389}
+  - {fileID: 8492651120593639467}
+  - {fileID: 7003916580872224932}
+  - {fileID: 6155141375831367477}
+  - {fileID: 2751821310289871908}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
-  m_SelectMode: 0
+  m_SelectMode: 1
   m_FocusMode: 1
   m_CustomReticle: {fileID: 0}
   m_AllowGazeInteraction: 0
@@ -710,6 +709,7 @@ MonoBehaviour:
   - RobotLeg
   - RobotArm
   - WoodenLeg
+  - Thruster
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
@@ -968,6 +968,7 @@ MonoBehaviour:
   - RobotLeg
   - RobotArm
   - WoodenLeg
+  - Thruster
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
@@ -1182,15 +1183,8 @@ MonoBehaviour:
   m_InteractableHoverScale: 1
   m_RecycleDelayTime: 1
   EnabledObjects:
-  - Handlebar
   - BigWheel
   - SmallWheel
-  - Battery
-  - NuclearBattery
-  - RobotHead
-  - RobotLeg
-  - RobotArm
-  - WoodenLeg
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
@@ -1227,14 +1221,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9058909565162248506}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5612897, y: -0.4300526, z: -0.5613271, w: 0.4300239}
+  m_LocalRotation: {x: 0.13014789, y: 0.017139584, z: -0.12943245, w: 0.9828607}
   m_LocalPosition: {x: 0, y: -0.0849, z: 0.0918}
   m_LocalScale: {x: 0.83333296, y: 0.83333296, z: 0.8333331}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7655772319523200714}
   m_Father: {fileID: 5801274976345421617}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 164.914, y: 180, z: 164.996}
 --- !u!33 &871633703744968972
 MeshFilter:
   m_ObjectHideFlags: 0

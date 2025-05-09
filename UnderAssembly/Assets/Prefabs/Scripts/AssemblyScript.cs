@@ -12,7 +12,7 @@ public class AssemblyScript : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        ON = false;
+        ON = true;
     }
 
     // Update is called once per frame

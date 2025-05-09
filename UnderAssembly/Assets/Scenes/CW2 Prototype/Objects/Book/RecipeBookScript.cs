@@ -11,7 +11,7 @@ public class RecipeBookScript : MonoBehaviour
 {
     Animator animator;
     bool open;
-    bool isHeld;
+    public bool isHeld;
     private XRGrabInteractable grabInteractable;
     ColourMixerScript colourMixerScript;
     public List<GameObject> pages;
@@ -20,6 +20,7 @@ public class RecipeBookScript : MonoBehaviour
     public InputActionProperty triggerAction;
     public bool isTurningPage;
     bool TriggerPressed;
+    PagesScript PageScript;
     public class Page
     {
         string title;
@@ -30,6 +31,7 @@ public class RecipeBookScript : MonoBehaviour
     void Start()
     {
         Pages = transform.Find("Pages");
+        PageScript = Pages.GetComponent<PagesScript>();
         colourMixerScript = GameObject.Find("ColourMixer").GetComponent<ColourMixerScript>();
         animator = GetComponent<Animator>();
 
@@ -99,32 +101,7 @@ public class RecipeBookScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float triggerValue = triggerAction.action.ReadValue<float>();
-        if(triggerValue > .5f && !TriggerPressed)
-        { 
-            if(isHeld)
-            {
-                Debug.Log(isTurningPage);
-
-                if (Pages.GetComponent<Animator>().GetInteger("Side") == -1 && !isTurningPage)
-                {
-                    isTurningPage = true;
-                    TurnPage(1);
-                }
-                else if (!isTurningPage)
-                {
-                    isTurningPage = true;
-                    TurnPage(-1);
-                }
-            }
-            Debug.Log(Pages.GetComponent<Animator>().GetInteger("Side"));
-            Debug.Log(isTurningPage);
-                TriggerPressed = true; 
-        }
-        else if (triggerValue <.5f && TriggerPressed)
-        {
-            TriggerPressed = false;
-        }
+        
 
         if (isHeld)
         {
@@ -132,7 +109,6 @@ public class RecipeBookScript : MonoBehaviour
             {
                 animator.SetBool("Open", true);
                 open = true;
-                Debug.Log("OPpen");
             }
             else
             {
@@ -151,9 +127,8 @@ public class RecipeBookScript : MonoBehaviour
             {
                 animator.SetBool("Open", false);
                 open = false;
-                Debug.Log("OPpen");
             }
-            Pages.gameObject.SetActive(false);
+           // Pages.gameObject.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.A))
@@ -164,15 +139,15 @@ public class RecipeBookScript : MonoBehaviour
         {
             TurnPage(1);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.N))
         {
-            if (Pages.GetComponent<Animator>().GetInteger("Side") == -1)
+            if (Pages.GetComponent<Animator>().GetInteger("Side") == 1)
             {
-                TurnPage(-1);
+                TurnPage(1);
             }
             else
             {
-                TurnPage(1);
+                TurnPage(-1);
             }
         }
     }
@@ -180,17 +155,20 @@ public class RecipeBookScript : MonoBehaviour
     private void OnGrab(SelectEnterEventArgs args)
     {
         isHeld = true;
-        Debug.Log("Spray can is now held.");
     }
 
     private void OnRelease(SelectExitEventArgs args)
     {
         isHeld = false;
-        Debug.Log("Spray can is now released.");
     }
 
     void TurnPage(int Dir)
     {
+
+        if ((true))
+        {
+            
+        }
         if (Dir == 1)
         {
           //  Pages.GetComponent<Animator>().ResetTrigger("TurnRight");

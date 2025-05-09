@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GeneralScript : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class GeneralScript : MonoBehaviour
     Vector3[] spawnRotations = { new Vector3(285.08551f, 270.003845f, 179.999817f), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0) };
     public ObjectTemplateScript NewProductTemplate;
     public List<ProductType> templates = new List<ProductType>();
+    UnityEngine.UI.Text MonitorProductTextMesh;
 
     public InputActionReference input;
     void Awake()
@@ -38,6 +41,7 @@ public class GeneralScript : MonoBehaviour
     {
         //GameObject.Find("EvaluatorTrigger").GetComponent<EvaluatorScript>();
         SpawnNewObject();
+        MonitorProductTextMesh = GameObject.Find("DisplayTitleText").GetComponent<UnityEngine.UI.Text>();
     }
 
     public void SpawnNewObject()
@@ -45,15 +49,15 @@ public class GeneralScript : MonoBehaviour
         if (CurrentProduct == null)
         {
 
+
+
+            int randint = Random.Range(0, ObjectsToSpawn.Count);
+            // Quaternion rotation = Quaternion.Euler(spawnRotations[randint]);
+            CurrentProduct = Instantiate(ObjectsToSpawn[randint], NewObjectSpawn.position, Quaternion.identity);
+            int randvariant = Random.Range(0, templates[randint].Variants.Count);
+            GameObject DesiredTemplate = Instantiate(templates[randint].Variants[randvariant].Prefab, Vector3.zero, Quaternion.identity);
+            NewProductTemplate = DesiredTemplate.GetComponent<ObjectTemplateScript>();
         }
-
-        int randint = Random.Range(0, ObjectsToSpawn.Count);
-       // Quaternion rotation = Quaternion.Euler(spawnRotations[randint]);
-        CurrentProduct = Instantiate(ObjectsToSpawn[randint], NewObjectSpawn.position, Quaternion.identity);
-        int randvariant = Random.Range(0, templates[randint].Variants.Count);
-        GameObject DesiredTemplate = Instantiate(templates[randint].Variants[randvariant].Prefab,Vector3.zero,Quaternion.identity);
-        NewProductTemplate = DesiredTemplate.GetComponent<ObjectTemplateScript>();
-
     }
     private void Update()
     {
@@ -66,6 +70,7 @@ public class GeneralScript : MonoBehaviour
             }
         }
 
+        MonitorProductTextMesh.text = "Directive: " + NewProductTemplate.TemplateTitle;
 
         // input.ToInputAction().performed += PressedPrimaryButton;
     }

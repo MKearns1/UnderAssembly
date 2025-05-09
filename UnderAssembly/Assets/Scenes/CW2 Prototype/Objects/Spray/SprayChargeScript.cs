@@ -12,6 +12,7 @@ public class SprayChargeScript : MonoBehaviour
     SprayGunScript gunScript;
     GameObject Fluid;
     GameObject MixedFluid;
+    GameObject Cap;
     ColourMixerScript MixerScript;
     Transform AttatchPoint;
     public Color colour;
@@ -46,6 +47,9 @@ public class SprayChargeScript : MonoBehaviour
         MixedFluid.SetActive(false);
         MixerScript = GameObject.Find("ColourMixer").GetComponent<ColourMixerScript>();
         ChargeLeft = 100;
+
+        Cap = transform.Find("Cap").gameObject;
+        Cap.SetActive(false);
 
         foreach (Transform t in transform.Find("DyeSegments").transform)
         {
@@ -86,7 +90,6 @@ public class SprayChargeScript : MonoBehaviour
             mixProgress += delta;
             lastShakeTime = Time.time;
         }
-        Debug.Log(mixProgress);
 
         lastControllerPosition = currentPos;
 
@@ -104,27 +107,30 @@ public class SprayChargeScript : MonoBehaviour
 
     public void AddNewDyeSegment(int r, int y, int b)
     {
-        Color newColor = Color.red;
+        if (DyeAmount < 4)
+        {
+            Color newColor = Color.red;
 
-        if (r > 0)
-        {
-            newColor = Color.red;
-            redAmount++;
-        }
-        else if (y > 0)
-        {
-            newColor = Color.yellow;
-            yellowAmount++;
-        }
-        else if (b > 0)
-        {
-            newColor = Color.blue;
-            blueAmount++;
-        }
+            if (r > 0)
+            {
+                newColor = Color.red;
+                redAmount++;
+            }
+            else if (y > 0)
+            {
+                newColor = Color.yellow;
+                yellowAmount++;
+            }
+            else if (b > 0)
+            {
+                newColor = Color.blue;
+                blueAmount++;
+            }
 
-        DyeSegments[DyeAmount].SetActive(true);
-        DyeSegments[DyeAmount].GetComponent<Renderer>().material.color = newColor;
-        DyeAmount++;
+            DyeSegments[DyeAmount].SetActive(true);
+            DyeSegments[DyeAmount].GetComponent<Renderer>().material.color = newColor;
+            DyeAmount++;
+        }
     }
 
     public void MixDye()
@@ -138,7 +144,8 @@ public class SprayChargeScript : MonoBehaviour
             obj.SetActive(false);
         }
         transform.Find("Charge").gameObject.SetActive(false);
-        
+        transform.Find("OpenCap").gameObject.SetActive(false);
+        Cap.SetActive(true);
 
         isMixed = true;
         Debug.Log(("Mixed"));

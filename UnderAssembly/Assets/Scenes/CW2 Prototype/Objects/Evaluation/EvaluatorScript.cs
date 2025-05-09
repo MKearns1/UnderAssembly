@@ -41,8 +41,16 @@ public class EvaluatorScript : MonoBehaviour
             if(other.GetComponent<ObjectBaseScript>() != null)
             {
                 AssembledObjectScript = other.GetComponent<ObjectBaseScript>();
-                EvaluateProduct();
-                Destroy(other.gameObject);
+                if (EvaluateProduct())
+                {
+                    Debug.Log("CORRECT");
+                }
+                else
+                {
+                    Debug.Log("WRONG");
+                }
+                    //EvaluateProduct();
+                    Destroy(other.gameObject);
             }
         }
     }

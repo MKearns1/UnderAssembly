@@ -4,21 +4,79 @@ using UnityEngine;
 
 public class PagesScript : MonoBehaviour
 {
+    public bool OnLeftSide;
+    public bool OnRightSide;
+    Animator animator;
+    RecipeBookScript bookScript;
+    bool TriggerPressed;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        OnRightSide = true;
+        animator = GetComponent<Animator>();
+        bookScript = transform.parent.GetComponent<RecipeBookScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        float triggerValue = bookScript.triggerAction.action.ReadValue<float>();
+        if (triggerValue > .5f && !TriggerPressed)
+        {
+            if (bookScript.isHeld)
+            {
+                Debug.Log("PressedTrigger");
+                TurnPage();
+
+            }
+
+            TriggerPressed = true;
+        }
+        else if (triggerValue < .5f && TriggerPressed)
+        {
+            TriggerPressed = false;
+        }
+
+        if (!bookScript.isHeld)
+        {
+            if (OnLeftSide)
+            {
+                OnLeftSide = false;
+                animator.Play("TurnPageLeft",0,0);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Comma))
+        {
+            Debug.Log("TurningPage");
+            TurnPage();
+        }
     }
 
-     public void Fuckeme()
+    public void TurnPage()
     {
-        transform.parent.GetComponent<RecipeBookScript>().isTurningPage = false;
-        Debug.Log("sjdfkjasdfkjabbas.kgbas.kjbg.kadsfg");
+        if (OnLeftSide)
+        {
+            OnLeftSide = false;
+            animator.SetTrigger("TurnLeft");
+        }
+        if (OnRightSide)
+        {
+            OnRightSide = false;
+            animator.SetTrigger("TurnRight");
+        }
+    }
+    public void SetOnLeftSide()
+    {
+        OnLeftSide = true;
+        animator.SetInteger("Side", -1);
+
+    }
+    public void SetOnRightSide()
+    {
+        OnRightSide = true;
+        animator.SetInteger("Side", 1);
+
     }
 }
