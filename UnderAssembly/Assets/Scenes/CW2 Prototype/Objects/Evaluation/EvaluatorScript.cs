@@ -44,6 +44,7 @@ public class EvaluatorScript : MonoBehaviour
                 if (EvaluateProduct())
                 {
                     Debug.Log("CORRECT");
+                    GeneralScript.Instance.ProductsSuccessfullyMade++;
                 }
                 else
                 {

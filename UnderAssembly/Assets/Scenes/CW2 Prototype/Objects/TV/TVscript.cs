@@ -10,11 +10,14 @@ public class TVscript : MonoBehaviour
     GameObject ProductName;
     GameObject ProductIcon;
     GameObject ProductColour;
+    GameObject Quota;
     string productType;
     public Texture2D[] Icons;
     public Texture2D DisplayIcon;
     public Dictionary<string, Texture2D> IconsDict = new Dictionary<string, Texture2D>();
-    
+
+    GameObject Timer;
+    public float time;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +26,8 @@ public class TVscript : MonoBehaviour
         ProductName = Canvas.transform.Find("BG1").Find("ProductName").gameObject;
         ProductIcon = Canvas.transform.Find("BG1").Find("ProductIcon").gameObject;
         ProductColour = Canvas.transform.Find("BG1").Find("ProductColour").gameObject;
-
+        Timer = Canvas.transform.Find("BG2").Find("TimerMain").Find("Text").gameObject;
+        Quota = Canvas.transform.Find("BG2").Find("QuotaMain").Find("Text").gameObject;
     }
 
     // Update is called once per frame
@@ -65,6 +69,23 @@ public class TVscript : MonoBehaviour
         ProductIcon.transform.Find("Image").GetComponent<UnityEngine.UI.Image>().sprite = sprite;
 
 
+        time -= Time.deltaTime;
+        time = Mathf.Max(time, 0);
+
+        Timer.GetComponent<UnityEngine.UI.Text>().text = FormattedTime(time);
+
+        Quota.GetComponent<UnityEngine.UI.Text>().text = 
+            GeneralScript.Instance.ProductsSuccessfullyMade + " of " + GeneralScript.Instance.Quota + "\n<size=29>UNITS COMPLETE</size>";
     }
 
+
+    string FormattedTime(float time)
+    {
+        
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time % 60);
+
+        string formattedTime = string.Format("{0:00}:{1:00}", minutes, seconds);
+        return formattedTime;
+    }
 }

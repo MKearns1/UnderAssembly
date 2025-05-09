@@ -40,7 +40,7 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
    
         if (OnAssemblyLine)
         {
-            transform.position += Vector3.right * Time.deltaTime * GameObject.Find("Assembly (2)").transform.GetChild(2).GetComponent<AssemblyScript>().AssemblySpeed/20;
+            transform.position += Vector3.right * Time.deltaTime * GameObject.Find("Assembly (2)").transform.Find("Trigger").GetComponent<AssemblyScript>().AssemblySpeed/20;
         }
 
          ObjectColourToChange.GetComponent<MeshRenderer>().materials[MaterialIndex].color = CurrentColour;

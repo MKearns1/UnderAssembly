@@ -19,6 +19,8 @@ public class GeneralScript : MonoBehaviour
     Vector3[] spawnRotations = { new Vector3(285.08551f, 270.003845f, 179.999817f), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0) };
     public ObjectTemplateScript NewProductTemplate;
     public List<ProductType> templates = new List<ProductType>();
+    public int ProductsSuccessfullyMade;
+    public int Quota;
     UnityEngine.UI.Text MonitorProductTextMesh;
 
     public InputActionReference input;
