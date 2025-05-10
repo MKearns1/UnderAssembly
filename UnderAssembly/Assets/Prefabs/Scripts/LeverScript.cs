@@ -34,13 +34,13 @@ public class LeverScript : MonoBehaviour
 
             if (z < -15f)
             {
-                GameObject.Find("Assembly (2)").transform.GetChild(2).GetComponent<AssemblyScript>().AssemblySpeed = 10;
+                GameObject.Find("Assembly (2)").transform.Find("Trigger").GetComponent<AssemblyScript>().AssemblySpeed = 10;
 
             }
 
             if (z > 15f)
             {
-                GameObject.Find("Assembly (2)").transform.GetChild(2).GetComponent<AssemblyScript>().AssemblySpeed = 0;
+                GameObject.Find("Assembly (2)").transform.Find("Trigger").GetComponent<AssemblyScript>().AssemblySpeed = 0;
 
             }
         }

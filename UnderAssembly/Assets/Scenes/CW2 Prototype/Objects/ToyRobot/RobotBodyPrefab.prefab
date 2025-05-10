@@ -157,7 +157,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2260210433357251438}
         m_TargetAssemblyTypeName: ObjectBaseScript, Assembly-CSharp
         m_MethodName: OnAddComponent
         m_Mode: 2
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2260210433357251438}
         m_TargetAssemblyTypeName: ObjectBaseScript, Assembly-CSharp
         m_MethodName: OnRemoveComponent
         m_Mode: 2
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2260210433357251438}
         m_TargetAssemblyTypeName: ObjectBaseScript, Assembly-CSharp
         m_MethodName: OnAddComponent
         m_Mode: 2
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2260210433357251438}
         m_TargetAssemblyTypeName: ObjectBaseScript, Assembly-CSharp
         m_MethodName: OnRemoveComponent
         m_Mode: 2
@@ -540,13 +540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db6b482573c576478e282e5d7c48552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SnapPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  AllSnapsCorrect: 0
   ObjectColourToChange: {fileID: 1930772557861776191}
   PossibleColors:
   - {r: 1, g: 0, b: 0, a: 0}
@@ -913,7 +906,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2260210433357251438}
         m_TargetAssemblyTypeName: ObjectBaseScript, Assembly-CSharp
         m_MethodName: OnAddComponent
         m_Mode: 2
@@ -928,7 +921,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2260210433357251438}
         m_TargetAssemblyTypeName: ObjectBaseScript, Assembly-CSharp
         m_MethodName: OnRemoveComponent
         m_Mode: 2
@@ -1262,7 +1255,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2260210433357251438}
         m_TargetAssemblyTypeName: ObjectBaseScript, Assembly-CSharp
         m_MethodName: OnAddComponent
         m_Mode: 2
@@ -1277,7 +1270,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2260210433357251438}
         m_TargetAssemblyTypeName: ObjectBaseScript, Assembly-CSharp
         m_MethodName: OnRemoveComponent
         m_Mode: 2
@@ -1483,7 +1476,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2260210433357251438}
         m_TargetAssemblyTypeName: ObjectBaseScript, Assembly-CSharp
         m_MethodName: OnAddComponent
         m_Mode: 2
@@ -1498,7 +1491,7 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2260210433357251438}
         m_TargetAssemblyTypeName: ObjectBaseScript, Assembly-CSharp
         m_MethodName: OnRemoveComponent
         m_Mode: 2
