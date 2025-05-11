@@ -213,6 +213,7 @@ MonoBehaviour:
   - RobotHead
   - Thruster
   - WoodenLeg
+  - RobotArm
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,

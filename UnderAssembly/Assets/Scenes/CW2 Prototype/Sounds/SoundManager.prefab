@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2652782391591797134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4184707472053451987}
+  - component: {fileID: 1785638675958144909}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4184707472053451987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2652782391591797134}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.212, y: -2.115, z: -5.035}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1785638675958144909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2652782391591797134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd52804bb0b32ab40ba6901c43713695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundObj: {fileID: 2647807530580104838, guid: 32d6756dcce38744b8f0ef2e6f6dc241,
+    type: 3}
+  Ambience: {fileID: 8300000, guid: bda068d22e8160e49b56713953adb7c6, type: 3}
+  ConveyorMove: {fileID: 8300000, guid: 57fdb967108a6b14682c30e0692cde76, type: 3}
+  SprayGunSound: {fileID: 8300000, guid: 26b1cc5b758b80a479adcc28f06e367a, type: 3}
+  AttachSound: {fileID: 8300000, guid: f679d4619dc1eb0428560bbf17ea16a2, type: 3}
+  LeverSound: {fileID: 8300000, guid: 44ef0ce6e5f4d474bad7d678aa3d1e53, type: 3}
+  ButtonSound: {fileID: 8300000, guid: ffbdd1e0548decd4d90f11093c1a1a1c, type: 3}
+  TurnPageSound: {fileID: 8300000, guid: 4198916da3d9a6942a609df808f0ce5a, type: 3}
+  DispenseDyeSound: {fileID: 8300000, guid: a984f7b1f2875844896ba5e04031862b, type: 3}
+  MixPaintSound: {fileID: 8300000, guid: 94f235b1ba1307847a4e0e59f5d8ffeb, type: 3}

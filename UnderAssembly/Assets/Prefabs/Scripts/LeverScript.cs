@@ -5,8 +5,7 @@ public class LeverScript : MonoBehaviour
 {
     public Transform pivot; // The pivot point of the lever
     public XRGrabInteractable grabInteractable;
-
-    
+    bool playedSound;
     
     private GameObject grabbingHand;
 
@@ -35,14 +34,29 @@ public class LeverScript : MonoBehaviour
             if (z < -15f)
             {
                 GameObject.Find("Assembly (2)").transform.Find("Trigger").GetComponent<AssemblyScript>().AssemblySpeed = 10;
-
+                GameObject.Find("Assembly (2)").transform.Find("Trigger").GetComponent<AssemblyScript>().ON = true;
+                if(!playedSound)
+                {
+                    playedSound = true;
+                    SoundManagerScript.Instance.PlaySound("LeverSound", gameObject, false, 1);
+                }
             }
-
+            else
             if (z > 15f)
             {
                 GameObject.Find("Assembly (2)").transform.Find("Trigger").GetComponent<AssemblyScript>().AssemblySpeed = 0;
-
+                GameObject.Find("Assembly (2)").transform.Find("Trigger").GetComponent<AssemblyScript>().ON = false;
+                if (!playedSound)
+                {
+                    playedSound = true;
+                    SoundManagerScript.Instance.PlaySound("LeverSound", gameObject, false, 1);
+                }
             }
+            else
+            {
+                playedSound = false;
+            }
+            
         }
     }
 

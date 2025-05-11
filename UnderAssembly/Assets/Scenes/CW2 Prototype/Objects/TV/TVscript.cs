@@ -147,6 +147,6 @@ public class TVscript : MonoBehaviour
         EvalScreen.transform.Find("Performance").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.CalculatePerformance();
         EvalScreen.transform.Find("Errors").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.ErrorsMade.ToString();
         EvalScreen.transform.Find("ComponentsUsed").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.ComponentsUsed.ToString();
-        EvalScreen.transform.Find("Cleanliness").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.CalculateCleanliness();
+        EvalScreen.transform.Find("Cleanliness").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.CalculateCleanliness().ToString();
     }
 }

@@ -286,14 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db6b482573c576478e282e5d7c48552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SnapPoints:
-  - {fileID: 882201092060460525}
-  - {fileID: 8776204382066342683}
-  - {fileID: 5394540989205626286}
-  - {fileID: 8796380027929707402}
-  - {fileID: 7932053316072478150}
-  - {fileID: 8742090823189086187}
-  AllSnapsCorrect: 0
   ObjectColourToChange: {fileID: 3226803906519893789}
   PossibleColors:
   - {r: 1, g: 0, b: 0, a: 0}
@@ -1152,6 +1144,7 @@ MonoBehaviour:
   m_RecycleDelayTime: 1
   EnabledObjects:
   - Battery
+  - NuclearBattery
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,
@@ -1367,6 +1360,7 @@ MonoBehaviour:
   m_RecycleDelayTime: 1
   EnabledObjects:
   - Battery
+  - NuclearBattery
   AllowedHoverMaterial: {fileID: 2100000, guid: 74fbbd9662530194c9ba7d0ea519a1ba,
     type: 2}
   ForbiddenHoverMaterial: {fileID: 2100000, guid: 56fa515e4b8986f42846cd79d6058f05,

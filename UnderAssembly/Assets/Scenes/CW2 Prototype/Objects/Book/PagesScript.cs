@@ -60,11 +60,13 @@ public class PagesScript : MonoBehaviour
         {
             OnLeftSide = false;
             animator.SetTrigger("TurnLeft");
+            SoundManagerScript.Instance.PlaySound("TurnPage", gameObject, false, 1f);
         }
         if (OnRightSide)
         {
             OnRightSide = false;
             animator.SetTrigger("TurnRight");
+            SoundManagerScript.Instance.PlaySound("TurnPage", gameObject, false, 1f);
         }
     }
     public void SetOnLeftSide()

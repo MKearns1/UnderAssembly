@@ -21,7 +21,7 @@ public class SprayGunScript : MonoBehaviour
     float ConsumptionRate = 5;
     SprayChargeScript ChargeObject;
     public Transform ChargeInsertionPoint;
-
+    GameObject Sound;
     private void Awake()
     {
         grabInteractable = transform.parent.GetComponent<XRGrabInteractable>();
@@ -46,44 +46,35 @@ public class SprayGunScript : MonoBehaviour
         emission.enabled = false;
 
         float triggerValue = triggerAction.action.ReadValue<float>();
-        if (isHeld && inFrontOfGun)
-        {
-            //Material mat = TargetObj.GetComponent<ObjectBaseScript>().ObjectColourToChange.GetComponent<MeshRenderer>().materials[0];
-
-            if (triggerValue > 0.5f)
-            {
-                //// Gradually change to the target color while the trigger is pulled
-                ////Color currentColor = mat.color;
-                //Color currentColor=TargetObj.GetComponent<ObjectBaseScript>().CurrentColour;
-                //Color newColor = Color.Lerp(currentColor, targetColor, Time.deltaTime * colorChangeSpeed);
-                //TargetObj.GetComponent<ObjectBaseScript>().CurrentColour = newColor;
-                ////  mat.color = newColor;
-                //// emission.enabled = true;
-                
-                
-            }
-
-        }
 
         if (triggerValue > 0.5f && isHeld)
         {
-            if(ChargeObject != null)
-            if (ChargeObject.ChargeLeft > 0)
-            {
-                emission.enabled = true;
-                ChargeObject.ChargeLeft -= Time.deltaTime * ConsumptionRate;
-
-                if (inFrontOfGun)
+            if (ChargeObject != null)
+                if (ChargeObject.ChargeLeft > 0)
                 {
-                    Color currentColor = TargetObj.GetComponent<ObjectBaseScript>().CurrentColour;
-                    Color newColor = Color.Lerp(currentColor, targetColor, Time.deltaTime * colorChangeSpeed);
-                    TargetObj.GetComponent<ObjectBaseScript>().CurrentColour = newColor;
+                    emission.enabled = true;
+                    ChargeObject.ChargeLeft -= Time.deltaTime * ConsumptionRate;
+
+                    if (inFrontOfGun)
+                    {
+                        Color currentColor = TargetObj.GetComponent<ObjectBaseScript>().CurrentColour;
+                        Color newColor = Color.Lerp(currentColor, targetColor, Time.deltaTime * colorChangeSpeed);
+                        TargetObj.GetComponent<ObjectBaseScript>().CurrentColour = newColor;
+                    }
+
+                    if (Sound == null)
+                        Sound = SoundManagerScript.Instance.PlaySound("SprayGunSound", gameObject, true, .75f);
+
                 }
-            }
+                else
+                {
+                    Destroy(Sound);
+                }
         }
         else
         {
             emission.enabled = false;
+            Destroy(Sound);
         }
         //  Debug.Log(isHeld && inFrontOfGun);
 
@@ -145,6 +136,7 @@ public class SprayGunScript : MonoBehaviour
         }
         targetColor = newColor;
         Physics.IgnoreCollision(InsertedCharge.GetComponent<Collider>(),transform.parent.GetComponent<Collider>());
+        SoundManagerScript.Instance.PlaySound("AttachSound", gameObject, false, .75f);
     }
     public void RemoveCharge(XRSocketInteractor InsertionPoint)
     {

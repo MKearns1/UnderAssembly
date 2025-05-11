@@ -18,29 +18,33 @@ public class ColourChargeSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (GameObject c in ActiveCharges)
+        bool shouldSpawn = true;
+
+        for (int i = ActiveCharges.Count - 1; i >= 0; i--)
         {
+            GameObject c = ActiveCharges[i];
+
             if (c != null)
             {
                 if (Vector3.Distance(c.transform.position, SpawnPos.position) < .2f)
-                { Removed = false; }
-                else
                 {
-                    Removed = true;
+                    shouldSpawn = false; // Found one close enough, don't spawn
+                    break;
                 }
             }
             else
             {
-                ActiveCharges.Remove(c);
+                ActiveCharges.RemoveAt(i); // Clean up null entries
             }
         }
-        if(Removed)
+
+        if (shouldSpawn)
         {
-            GameObject NewCharge = Instantiate(ColourCharge, SpawnPos.position, Quaternion.identity);
-            ActiveCharges.Add(NewCharge);
+            GameObject NewObject = Instantiate(ColourCharge, SpawnPos.position, SpawnPos.rotation);
+            ActiveCharges.Add(NewObject);
             GeneralScript.Instance.ComponentsUsed++;
-            Removed = false;
         }
+
     }
 
 }

@@ -13,6 +13,7 @@ public class MixerLeverScript : MonoBehaviour
     private bool unitDispensed = false;
     public float LetGoRange;
     public bool LeverDown;
+    bool playedSound;
 
     private GameObject grabbingHand;
 
@@ -29,9 +30,6 @@ public class MixerLeverScript : MonoBehaviour
     void Update()
     {
 
-        LeverDown = false;
-
-
         if (grabbingHand != null)
         {
             Vector3 handDirection = grabbingHand.transform.position - transform.GetChild(0).position;
@@ -42,7 +40,6 @@ public class MixerLeverScript : MonoBehaviour
                 Debug.Log("asdasds");
 
             }
-            Debug.Log("notnull");
 
         }
 
@@ -52,44 +49,30 @@ public class MixerLeverScript : MonoBehaviour
             if (z > 180f) z -= 360f;
 
 
-            if (z < 50)
+            if (z < 70)
             {
                 LeverDown = false;
-
-                //if (pullTimer >= unitDispenseTime && !unitDispensed)
-                {
-                    DispenseDyeUnit();
-                    unitDispensed = true; 
-
-                    // StopSprayAfterDelay(0.5f); // Stops after a short burst
-                }
+                playedSound = false;
 
             }
 
             if (z > 110)
             {
                 LeverDown = true;
-                pullTimer += Time.deltaTime;
-
-                if(pullTimer < 1)
+                if (!playedSound)
                 {
-
+                    playedSound = true;
+                    SoundManagerScript.Instance.PlaySound("LeverSound", gameObject, false, 1);
                 }
-
             }
+            Debug.Log(z);
         }
     }
 
 
-    void DispenseDyeUnit()
-    {
-
-    }
-
     void OnGrab(SelectEnterEventArgs args)
     {
         grabbingHand = args.interactorObject.transform.gameObject;
-        Debug.Log(grabbingHand);
 
     }
 

@@ -55,9 +55,6 @@ public class GeneralScript : MonoBehaviour
     {
         if (CurrentProduct == null && GameStarted)
         {
-
-
-
             int randint = Random.Range(0, ObjectsToSpawn.Count);
             // Quaternion rotation = Quaternion.Euler(spawnRotations[randint]);
             CurrentProduct = Instantiate(ObjectsToSpawn[randint], NewObjectSpawn.position, Quaternion.identity);
@@ -65,6 +62,7 @@ public class GeneralScript : MonoBehaviour
             GameObject DesiredTemplate = Instantiate(templates[randint].Variants[randvariant].Prefab, Vector3.zero, Quaternion.identity);
             DesiredTemplate.GetComponent<ObjectTemplateScript>().Initialize();
             NewProductTemplate = DesiredTemplate.GetComponent<ObjectTemplateScript>();
+            SoundManagerScript.Instance.PlaySound("ButtonSound", gameObject, false, .75f);
         }
 
     }
@@ -74,11 +72,34 @@ public class GeneralScript : MonoBehaviour
         {
             EndGame();
         }
+
+        if (input.action != null)
+        {
+            if (input.action.IsPressed())
+            {
+                foreach (GameObject rayinteractor in RayInteractors)
+                {
+                    rayinteractor.SetActive(true);
+                }
+            }
+            else
+            {
+                foreach (GameObject rayinteractor in RayInteractors)
+                {
+                    rayinteractor.SetActive(false);
+                }
+            }
+        }
+
+    }
+
+    private void OnEnable()
+    {
+        input.ToInputAction().performed += PressedPrimaryButton;
     }
 
     private void PressedPrimaryButton(InputAction.CallbackContext context)
     {
-        Debug.Log(context.performed);
         // throw new System.NotImplementedException();
     }
 
@@ -146,7 +167,7 @@ public class GeneralScript : MonoBehaviour
 
     public string CalculatePerformance()
     {
-        float PercentageCorrect = ProductsSuccessfullyMade / Quota * 100;
+        float PercentageCorrect = ((float)ProductsSuccessfullyMade / Quota) * 100f;
 
         if (PercentageCorrect > 90)
         {
@@ -194,19 +215,21 @@ public class GeneralScript : MonoBehaviour
 
         NumberOfActiveObjectsLeft -= 12;
 
-        if (NumberOfActiveObjectsLeft < 3) 
+        //return NumberOfActiveObjectsLeft;
+
+        if (NumberOfActiveObjectsLeft < 3)
         {
             return "PRISTINE";
         }
-        else if (NumberOfActiveObjectsLeft < 8)
+        else if (NumberOfActiveObjectsLeft < 5)
         {
             return "ACCEPTABLE";
         }
-        else if (NumberOfActiveObjectsLeft < 15)
+        else if (NumberOfActiveObjectsLeft < 10)
         {
             return "MARGINAL";
         }
-        else if (NumberOfActiveObjectsLeft < 20)
+        else if (NumberOfActiveObjectsLeft < 16)
         {
             return "HAZARDOUS";
         }

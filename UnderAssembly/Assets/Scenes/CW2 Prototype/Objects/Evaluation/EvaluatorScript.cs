@@ -41,8 +41,9 @@ public class EvaluatorScript : MonoBehaviour
     {
         if (other != null)
         {
-            if(other.GetComponent<ObjectBaseScript>() != null)
+            if(other.GetComponent<ObjectBaseScript>() != null && AssembledObjectScript == null)
             {
+                AssembledProduct = other.gameObject;
                 AssembledObjectScript = other.GetComponent<ObjectBaseScript>();
                 if (EvaluateProduct())
                 {
@@ -56,8 +57,7 @@ public class EvaluatorScript : MonoBehaviour
                     GeneralScript.Instance.ErrorsMade++;
 
                 }
-                //EvaluateProduct();
-                Destroy(other.gameObject);
+                AssembledObjectScript.DestroySelf();
             }
         }
     }
@@ -70,6 +70,7 @@ public class EvaluatorScript : MonoBehaviour
             {
                 if(AssembledObjectScript.Sockets[i].transform.Find("FakeComponent").GetComponent<ComponentScript>().ObjectName != CurrentTemplate.CorrectSocketObject[i])
                 {
+                    Debug.Log("Sockets Wrong");
                     return false;
                 }
             }

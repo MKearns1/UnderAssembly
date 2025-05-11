@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: 1940336768721454698, guid: f0b57cd2cbb74654da85602c128c6ddf,
         type: 3}
       propertyPath: m_Name
-      value: Robot Leg
+      value: RobotLeg
       objectReference: {fileID: 0}
     - target: {fileID: 2902236164516709741, guid: f0b57cd2cbb74654da85602c128c6ddf,
         type: 3}
@@ -26,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 3182733965113046995, guid: f0b57cd2cbb74654da85602c128c6ddf,
         type: 3}
       propertyPath: m_Name
-      value: Robot Leg
+      value: RobotLeg
       objectReference: {fileID: 0}
     - target: {fileID: 3302954833980959126, guid: f0b57cd2cbb74654da85602c128c6ddf,
         type: 3}
@@ -36,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 3414390288019002132, guid: f0b57cd2cbb74654da85602c128c6ddf,
         type: 3}
       propertyPath: m_Name
-      value: Robot Leg
+      value: RobotLeg
       objectReference: {fileID: 0}
     - target: {fileID: 3532509746478500138, guid: f0b57cd2cbb74654da85602c128c6ddf,
         type: 3}
@@ -91,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 4040367263775696364, guid: f0b57cd2cbb74654da85602c128c6ddf,
         type: 3}
       propertyPath: m_Name
-      value: Robot Leg
+      value: RobotLeg
       objectReference: {fileID: 0}
     - target: {fileID: 5593428939101915454, guid: f0b57cd2cbb74654da85602c128c6ddf,
         type: 3}
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2475b0c359f9575428d1f7a95c3c520f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TemplateTitle: Stool
+  TemplateTitle: Walker
   BaseType: Chair
   CorrectSocketObject: []
   Colour: {r: 0, g: 0, b: 0, a: 0}

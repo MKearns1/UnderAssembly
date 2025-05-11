@@ -38,7 +38,7 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
     {
         CorrectColour = (ColorsAreEqual(CurrentColour, DesiredColour));
    
-        if (OnAssemblyLine)
+        if (OnAssemblyLine && GameObject.Find("Assembly (2)").transform.Find("Trigger").GetComponent<AssemblyScript>().ON)
         {
             transform.position += Vector3.right * Time.deltaTime * GameObject.Find("Assembly (2)").transform.Find("Trigger").GetComponent<AssemblyScript>().AssemblySpeed/20;
         }
@@ -67,7 +67,7 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
         GameObject Component = socket.selectTarget.gameObject;
         AttachedObjects.Add(AttachPoint.gameObject.name,Component);
         StartCoroutine(WaitUntilSettled(Component, AttachPoint));
-            
+        SoundManagerScript.Instance.PlaySound("AttachSound", gameObject, false, .75f);  
     }
 
     public void OnRemoveComponent(GameObject AttachPoint)
@@ -260,4 +260,15 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
         }
     }
 
+
+    public void DestroySelf()
+    {
+        var objectsToDestroy = new List<GameObject>(AttachedObjects.Values);
+        foreach (GameObject obj in objectsToDestroy)
+        {
+            Destroy(obj);
+        }
+
+        Destroy(gameObject);
+    }
 }

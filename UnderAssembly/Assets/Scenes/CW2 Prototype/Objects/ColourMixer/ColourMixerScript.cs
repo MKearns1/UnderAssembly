@@ -140,7 +140,6 @@ public class ColourMixerScript : MonoBehaviour
                 }
             }
 
-            Debug.Log(hit.collider.gameObject);
         }
     }
 

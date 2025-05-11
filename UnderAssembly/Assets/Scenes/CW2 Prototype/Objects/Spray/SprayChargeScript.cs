@@ -130,6 +130,8 @@ public class SprayChargeScript : MonoBehaviour
             DyeSegments[DyeAmount].SetActive(true);
             DyeSegments[DyeAmount].GetComponent<Renderer>().material.color = newColor;
             DyeAmount++;
+
+            SoundManagerScript.Instance.PlaySound("DispenseDye", gameObject, false, 1f);
         }
     }
 
@@ -148,7 +150,7 @@ public class SprayChargeScript : MonoBehaviour
         Cap.SetActive(true);
 
         isMixed = true;
-        Debug.Log(("Mixed"));
+        SoundManagerScript.Instance.PlaySound("MixPaint", gameObject,false,1f);
     }
 
     void OnEnable()

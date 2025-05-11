@@ -8,6 +8,7 @@ public class AssemblyScript : MonoBehaviour, IInteractable
     GameObject item;
     public bool ON;
     public float AssemblySpeed;
+    GameObject Sound;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +33,34 @@ public class AssemblyScript : MonoBehaviour, IInteractable
 
         //  GetComponent<Rigidbody>().velocity = new Vector3(AssemblySpeed,0,0) * Time.deltaTime;
 
+        if (ON)
+        {
+            if (Sound == null)
+            {
+                Sound = SoundManagerScript.Instance.PlaySound("ConveyorMove", gameObject, true, .1f);
 
+                if (Sound.GetComponent<AudioSource>().isPlaying == false)
+                {
+
+                }
+            }
+        }
+        else
+        {
+            if (Sound != null)
+            {
+                if (Sound.GetComponent<AudioSource>().isPlaying == true)
+                {
+                    Destroy(Sound);
+                }
+            }
+        }
+       
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (ON)
+       // if (ON)
         {
             // onLine = true;
             item = other.gameObject;
