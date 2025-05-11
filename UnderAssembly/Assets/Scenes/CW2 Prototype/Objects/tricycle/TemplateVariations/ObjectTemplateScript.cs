@@ -16,6 +16,17 @@ public class ObjectTemplateScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void Initialize()
+    {
         colourMixerScript = GameObject.Find("ColourMixer").GetComponent<ColourMixerScript>();
         if (colourMixerScript.dyeCombinations.Count > 0)
         {
@@ -28,11 +39,5 @@ public class ObjectTemplateScript : MonoBehaviour
         {
             CorrectSocketObject.Add(Trigger.GetChild(i).name);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

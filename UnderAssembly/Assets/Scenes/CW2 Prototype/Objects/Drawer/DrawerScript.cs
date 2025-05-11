@@ -46,6 +46,7 @@ public class DrawerScript : MonoBehaviour
         {
             GameObject NewObject = Instantiate(ObjectToSpawn, SpawnPos.position, SpawnPos.rotation);
             ActiveObjects.Add(NewObject);
+            GeneralScript.Instance.ComponentsUsed++;
             Removed = false;
         }
     }

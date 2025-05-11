@@ -38,6 +38,7 @@ public class ColourChargeSpawner : MonoBehaviour
         {
             GameObject NewCharge = Instantiate(ColourCharge, SpawnPos.position, Quaternion.identity);
             ActiveCharges.Add(NewCharge);
+            GeneralScript.Instance.ComponentsUsed++;
             Removed = false;
         }
     }

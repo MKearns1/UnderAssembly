@@ -29,8 +29,11 @@ public class EvaluatorScript : MonoBehaviour
             GetComponent<Renderer>().material.color = Color.red;
         }
 
-        CurrentTemplate = GeneralScript.Instance.NewProductTemplate;
-        CorrectSocketPlacement = CurrentTemplate.CorrectSocketObject;
+        if (GeneralScript.Instance.NewProductTemplate != null)
+        {
+            CurrentTemplate = GeneralScript.Instance.NewProductTemplate;
+            CorrectSocketPlacement = CurrentTemplate.CorrectSocketObject;
+        }
     }
 
 
@@ -45,13 +48,16 @@ public class EvaluatorScript : MonoBehaviour
                 {
                     Debug.Log("CORRECT");
                     GeneralScript.Instance.ProductsSuccessfullyMade++;
+                    GeneralScript.Instance.ProductsMade++;
                 }
                 else
                 {
-                    Debug.Log("WRONG");
+                    Debug.Log("WRONG"); GeneralScript.Instance.ProductsMade++;
+                    GeneralScript.Instance.ErrorsMade++;
+
                 }
-                    //EvaluateProduct();
-                    Destroy(other.gameObject);
+                //EvaluateProduct();
+                Destroy(other.gameObject);
             }
         }
     }

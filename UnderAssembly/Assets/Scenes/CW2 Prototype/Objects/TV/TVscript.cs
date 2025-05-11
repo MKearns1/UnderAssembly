@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TVscript : MonoBehaviour
@@ -11,10 +12,17 @@ public class TVscript : MonoBehaviour
     GameObject ProductIcon;
     GameObject ProductColour;
     GameObject Quota;
+    GameObject MainMenu;
+    GameObject EvalScreen;
     string productType;
     public Texture2D[] Icons;
     public Texture2D DisplayIcon;
     public Dictionary<string, Texture2D> IconsDict = new Dictionary<string, Texture2D>();
+
+    ObjectTemplateScript Template;
+    private ObjectTemplateScript lastTemplate;
+    private string lastProductType;
+    private float lastTime = -1;
 
     GameObject Timer;
     public float time;
@@ -28,54 +36,69 @@ public class TVscript : MonoBehaviour
         ProductColour = Canvas.transform.Find("BG1").Find("ProductColour").gameObject;
         Timer = Canvas.transform.Find("BG2").Find("TimerMain").Find("Text").gameObject;
         Quota = Canvas.transform.Find("BG2").Find("QuotaMain").Find("Text").gameObject;
+        MainMenu = Canvas.transform.Find("MainMenu").gameObject;
+        EvalScreen = Canvas.transform.Find("EvaluationScreen").gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        ProductName.transform.Find("Text").GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.NewProductTemplate.TemplateTitle;
-        ProductColour.transform.Find("Image").Find("Text").GetComponent<TextMeshProUGUI>().text = GeneralScript.Instance.NewProductTemplate.ColourName;
-        ProductColour.transform.Find("Image").GetComponent<UnityEngine.UI.Image>().color = GeneralScript.Instance.NewProductTemplate.Colour;
-        productType = GeneralScript.Instance.NewProductTemplate.BaseType;
-        
-
-        switch (productType)
+        if (GeneralScript.Instance.NewProductTemplate != null &&
+    GeneralScript.Instance.NewProductTemplate != lastTemplate)
         {
-            case "Tricycle":
-                DisplayIcon = Icons[0];
-                break;
+            lastTemplate = GeneralScript.Instance.NewProductTemplate;
+            lastTemplate.Colour = GeneralScript.Instance.NewProductTemplate.Colour;
+            Template = lastTemplate;
 
-            case "MonsterTruck":
-                DisplayIcon = Icons[1];
-                break;
+            ProductName.transform.Find("Text").GetComponent<UnityEngine.UI.Text>().text = Template.TemplateTitle;
+            ProductColour.transform.Find("Image").Find("Text").GetComponent<TextMeshProUGUI>().text = Template.ColourName;
+            ProductColour.transform.Find("Image").GetComponent<UnityEngine.UI.Image>().color = Template.Colour;
+            Debug.Log(Template.Colour);
 
-            case "Robot":
-                DisplayIcon = Icons[2];
-                break;
+            if (Template.BaseType != lastProductType)
+            {
+                lastProductType = Template.BaseType;
+                switch (Template.BaseType)
+                {
+                    case "Tricycle": DisplayIcon = Icons[0]; break;
+                    case "MonsterTruck": DisplayIcon = Icons[1]; break;
+                    case "Robot": DisplayIcon = Icons[2]; break;
+                    case "Jackhammer": DisplayIcon = Icons[3]; break;
+                    case "Chair": DisplayIcon = Icons[4]; break;
+                }
 
-            case "Jackhammer":
-                DisplayIcon = Icons[3];
-                break;
-
-            case "Chair":
-                DisplayIcon = Icons[4];
-                break;
-
+                Sprite sprite = Sprite.Create(DisplayIcon, new Rect(0, 0, DisplayIcon.width, DisplayIcon.height), new Vector2(0.5f, 0.5f));
+                ProductIcon.transform.Find("Image").GetComponent<UnityEngine.UI.Image>().sprite = sprite;
+            }
         }
 
+        if (GeneralScript.Instance.GameStarted)
+        {
+            // Timer update — still per frame, but cheap
+            time -= Time.deltaTime;
+            time = Mathf.Max(time, 0);
+            if (Mathf.Abs(time - lastTime) > 0.1f)
+            {
+                Timer.GetComponent<UnityEngine.UI.Text>().text = FormattedTime(time);
+                lastTime = time;
+            }
+        }
+        // Quota update — only if count changes
+        string quotaText = GeneralScript.Instance.ProductsMade + " of " + GeneralScript.Instance.Quota;
+        if (Quota.GetComponent<UnityEngine.UI.Text>().text != quotaText)
+        {
+            Quota.GetComponent<UnityEngine.UI.Text>().text = quotaText + "\n<size=29>UNITS COMPLETE</size>";
+        }
 
-        Texture2D texture = DisplayIcon; // assuming Icons[2] is a Texture2D
-        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-        ProductIcon.transform.Find("Image").GetComponent<UnityEngine.UI.Image>().sprite = sprite;
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            StartGame();
+        }
 
-
-        time -= Time.deltaTime;
-        time = Mathf.Max(time, 0);
-
-        Timer.GetComponent<UnityEngine.UI.Text>().text = FormattedTime(time);
-
-        Quota.GetComponent<UnityEngine.UI.Text>().text = 
-            GeneralScript.Instance.ProductsSuccessfullyMade + " of " + GeneralScript.Instance.Quota + "\n<size=29>UNITS COMPLETE</size>";
+        if(time <= 0)
+        {
+            GeneralScript.Instance.EndGame();
+        }
     }
 
 
@@ -87,5 +110,43 @@ public class TVscript : MonoBehaviour
 
         string formattedTime = string.Format("{0:00}:{1:00}", minutes, seconds);
         return formattedTime;
+    }
+
+    public void StartGame()
+    {
+        Debug.Log("Template at StartGame: " + GeneralScript.Instance.NewProductTemplate);
+        Debug.Log("Colour: " + GeneralScript.Instance.NewProductTemplate?.Colour);
+        Debug.Log("ColourName: " + GeneralScript.Instance.NewProductTemplate?.ColourName);
+
+        MainMenu.SetActive(false);
+        Canvas.transform.Find("BG1").gameObject.SetActive(true);
+        Canvas.transform.Find("BG2").gameObject.SetActive(true);
+        GeneralScript.Instance.StartGame();
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void EndSession()
+    {
+        Canvas.transform.Find("BG1").gameObject.SetActive(false) ;
+        Canvas.transform.Find("BG2").gameObject.SetActive(false) ;
+        EvalScreen.SetActive(true);
+
+        EvalScreen.transform.Find("Performance").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.CalculatePerformance();
+        EvalScreen.transform.Find("Errors").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.ErrorsMade.ToString();
+        EvalScreen.transform.Find("ComponentsUsed").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.ComponentsUsed.ToString();
+        EvalScreen.transform.Find("Cleanliness").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.CalculateCleanliness();
     }
 }

@@ -82,6 +82,20 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
                 Destroy(child.gameObject);
 
         }
+
+
+        foreach (Transform t in transform.Find("Triggers"))
+        {
+            if (t.Find("FakeComponent") != null)
+            {
+                Collider CurrentFakeColliders = t.Find("FakeComponent").GetComponent<Collider>();
+                Physics.IgnoreCollision(CurrentFakeColliders, RemovedComponent.GetComponent<Collider>(),false);
+                Physics.IgnoreCollision(RemovedComponent.GetComponent<Collider>(), CurrentFakeColliders,false);
+
+            }
+        }
+
+
         Physics.IgnoreCollision(GetComponent<Collider>(), RemovedComponent.GetComponent<Collider>(), false);
         Physics.IgnoreCollision(RemovedComponent.GetComponent<Collider>(), GetComponent<Collider>(), false);
         AttachedObjects.Remove(AttachPoint.name);
@@ -121,11 +135,51 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
 
         GameObject FakeComponent = Instantiate(Component, Component.transform.position, Component.transform.rotation);
         FakeComponent.transform.SetParent(socket.transform);
-        FakeComponent.GetComponent<Rigidbody>().isKinematic = true;
+
+        foreach (Collider c in GetComponents<Collider>())
+        {
+            Physics.IgnoreCollision(c, Component.GetComponent<Collider>());
+            Physics.IgnoreCollision(Component.GetComponent<Collider>(), c);
+        }
+
+        //foreach (KeyValuePair<string, GameObject> entry in AttachedObjects)
+        //{
+        //    //if (entry.Value.transform.Find("FakeComponent") != null)
+        //    {
+        //        Collider AttachedObjCollider;
+        //        AttachedObjCollider = entry.Value.GetComponent<Collider>();
+
+        //        Physics.IgnoreCollision(AttachedObjCollider, Component.GetComponent<Collider>());
+        //        Physics.IgnoreCollision(Component.GetComponent<Collider>(), AttachedObjCollider);
+        //    }
+        //}
+
+        foreach (Transform t in transform.Find("Triggers"))
+        {
+            if (t.Find("FakeComponent") != null)
+            {
+                Collider CurrentFakeColliders = t.Find("FakeComponent").GetComponent<Collider>();
+                Physics.IgnoreCollision(CurrentFakeColliders, Component.GetComponent<Collider>());
+                Physics.IgnoreCollision(Component.GetComponent<Collider>(), CurrentFakeColliders);
+
+                foreach (KeyValuePair<string, GameObject> entry in AttachedObjects)
+                {
+
+                    Collider CurrentRealAttachedColliders;
+                    CurrentRealAttachedColliders = entry.Value.GetComponent<Collider>();
+
+                    Physics.IgnoreCollision(CurrentRealAttachedColliders, FakeComponent.GetComponent<Collider>());
+                    Physics.IgnoreCollision(FakeComponent.GetComponent<Collider>(), CurrentRealAttachedColliders);
+
+                }
+
+            }
+        }
+
         Physics.IgnoreCollision(FakeComponent.GetComponent<Collider>(), Component.GetComponent<Collider>());
-        Physics.IgnoreCollision(GetComponent<Collider>(), Component.GetComponent<Collider>());
-        Physics.IgnoreCollision(Component.GetComponent<Collider>(), GetComponent<Collider>());
         Physics.IgnoreCollision(Component.GetComponent<Collider>(), FakeComponent.GetComponent<Collider>());
+
+        
         //Destroy(Component.gameObject);
         Destroy(FakeComponent.GetComponent<XRGrabInteractable>());
         Destroy(FakeComponent.GetComponent<XRGeneralGrabTransformer>());

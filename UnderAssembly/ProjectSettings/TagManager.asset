@@ -7,6 +7,10 @@ TagManager:
   - SprayGun
   - BaseObject
   - ColourChargeCap
+  - Ray Interactor
+  - Direct Interactor
+  - Poke Interactor
+  - Spawner
   layers:
   - Default
   - TransparentFX
