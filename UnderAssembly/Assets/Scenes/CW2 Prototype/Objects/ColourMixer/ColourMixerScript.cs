@@ -101,7 +101,6 @@ public class ColourMixerScript : MonoBehaviour
 
     Color MixRYB(float r, float y, float b)
     {
-        // Define RGB equivalents of RYB primaries
         Color red = new Color(1f, 0f, 0f);
         Color yellow = new Color(1f, 1f, 0f);
         Color blue = new Color(0f, 0f, 1f);
@@ -109,7 +108,6 @@ public class ColourMixerScript : MonoBehaviour
         float total = r + y + b;
         if (total == 0) return Color.white;
 
-        // Weighted average of RGB colors based on RYB amounts
         Color result = (red * r + yellow * y + blue * b) / total;
         return result;
     }
@@ -130,13 +128,7 @@ public class ColourMixerScript : MonoBehaviour
                 if (!sprayScript.isMixed)
                 {
                     sprayScript.AddNewDyeSegment(r, y, b);
-                    // sprayScript.redAmount += r;
-                    //  sprayScript.yellowAmount += y;
-                    // sprayScript.blueAmount += b;
-
                     Debug.Log("Ray hit the target object!");
-                    //hit.collider.transform.parent.GetComponent<SprayChargeScript>().colour = ;
-                    //sprayScript.colour = MixRYB(sprayScript.redAmount, sprayScript.yellowAmount, sprayScript.blueAmount);
                 }
             }
 

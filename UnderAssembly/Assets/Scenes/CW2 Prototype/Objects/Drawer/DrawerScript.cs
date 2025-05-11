@@ -29,7 +29,6 @@ public class DrawerScript : MonoBehaviour
 
         bool foundNull = false;
 
-        // Quick scan for any nulls (lightweight)
         foreach (var obj in ActiveObjects)
         {
             if (obj == null || obj.Equals(null))
@@ -39,7 +38,6 @@ public class DrawerScript : MonoBehaviour
             }
         }
 
-        // Only remove nulls if any were found
         if (foundNull)
         {
             ActiveObjects.RemoveAll(x => x == null || x.Equals(null));
