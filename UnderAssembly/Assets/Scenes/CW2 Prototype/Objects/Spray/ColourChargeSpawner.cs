@@ -18,6 +18,25 @@ public class ColourChargeSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        bool foundNull = false;
+
+        // Quick scan for any nulls (lightweight)
+        foreach (var obj in ActiveCharges)
+        {
+            if (obj == null || obj.Equals(null))
+            {
+                foundNull = true;
+                break;
+            }
+        }
+
+        // Only remove nulls if any were found
+        if (foundNull)
+        {
+            ActiveCharges.RemoveAll(x => x == null || x.Equals(null));
+        }
+
         bool shouldSpawn = true;
 
         for (int i = ActiveCharges.Count - 1; i >= 0; i--)
@@ -32,10 +51,7 @@ public class ColourChargeSpawner : MonoBehaviour
                     break;
                 }
             }
-            else
-            {
-                ActiveCharges.RemoveAt(i); // Clean up null entries
-            }
+
         }
 
         if (shouldSpawn)

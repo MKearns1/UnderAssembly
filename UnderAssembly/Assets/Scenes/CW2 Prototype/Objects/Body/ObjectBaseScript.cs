@@ -67,7 +67,8 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
         GameObject Component = socket.selectTarget.gameObject;
         AttachedObjects.Add(AttachPoint.gameObject.name,Component);
         StartCoroutine(WaitUntilSettled(Component, AttachPoint));
-        SoundManagerScript.Instance.PlaySound("AttachSound", gameObject, false, .75f);  
+        SoundManagerScript.Instance.PlaySound("AttachSound", gameObject, false, .75f);
+        Component.GetComponent<ComponentScript>().baseObject = this;
     }
 
     public void OnRemoveComponent(GameObject AttachPoint)
@@ -101,8 +102,10 @@ public class ObjectBaseScript : MonoBehaviour, IInteractable
         AttachedObjects.Remove(AttachPoint.name);
 
         GetComponent<Rigidbody>().AddForce(Vector3.left * 0.0001f);
-        
-       // Physics.SyncTransforms();
+
+        RemovedComponent.GetComponent<ComponentScript>().baseObject = null;
+
+        // Physics.SyncTransforms();
     }
 
 

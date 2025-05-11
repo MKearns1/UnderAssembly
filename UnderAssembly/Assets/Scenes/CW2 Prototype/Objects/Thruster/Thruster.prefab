@@ -335,6 +335,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: Thruster
+  Model: {fileID: 5662981757906429347}
+  MeshRenderer: {fileID: 0}
+  MaterialIndex: 0
 --- !u!1 &7521864454064820426
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +728,12 @@ PrefabInstance:
 --- !u!4 &5034218764224691993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bf22c484c2453124fa2b113c8d9ea02e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4780459087631128818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5662981757906429347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bf22c484c2453124fa2b113c8d9ea02e,
     type: 3}
   m_PrefabInstance: {fileID: 4780459087631128818}
   m_PrefabAsset: {fileID: 0}

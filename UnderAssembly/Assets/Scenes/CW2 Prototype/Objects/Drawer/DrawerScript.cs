@@ -27,23 +27,35 @@ public class DrawerScript : MonoBehaviour
         ClampedPos.x = Mathf.Clamp(transform.position.x,startpos.x-.0122f,startpos.x+0.2132f);
         transform.position = ClampedPos;
 
+        bool foundNull = false;
+
+        // Quick scan for any nulls (lightweight)
+        foreach (var obj in ActiveObjects)
+        {
+            if (obj == null || obj.Equals(null))
+            {
+                foundNull = true;
+                break;
+            }
+        }
+
+        // Only remove nulls if any were found
+        if (foundNull)
+        {
+            ActiveObjects.RemoveAll(x => x == null || x.Equals(null));
+        }
+
         bool shouldSpawn = true;
 
         for (int i = ActiveObjects.Count - 1; i >= 0; i--)
         {
             GameObject c = ActiveObjects[i];
 
-            if (c != null)
+
+            if (Vector3.Distance(c.transform.position, SpawnPos.position) < RespawnObjectRange)
             {
-                if (Vector3.Distance(c.transform.position, SpawnPos.position) < RespawnObjectRange)
-                {
-                    shouldSpawn = false; // Found one close enough, don't spawn
-                    break;
-                }
-            }
-            else
-            {
-                ActiveObjects.RemoveAt(i); // Clean up null entries
+                shouldSpawn = false;
+                break;
             }
         }
 
@@ -54,6 +66,12 @@ public class DrawerScript : MonoBehaviour
             GeneralScript.Instance.ComponentsUsed++;
         }
 
+    }
 
+
+    public static List<GameObject> RemoveNulls(List<GameObject> e)
+    {
+        e.RemoveAll(x => x == null);
+        return e;
     }
 }

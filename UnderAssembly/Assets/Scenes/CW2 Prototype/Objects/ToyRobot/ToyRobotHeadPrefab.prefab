@@ -246,6 +246,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectName: RobotHead
+  Model: {fileID: 7529171230868394117}
+  MeshRenderer: {fileID: 0}
+  MaterialIndex: 0
 --- !u!1 &7521864454064820426
 GameObject:
   m_ObjectHideFlags: 0
