@@ -172,13 +172,13 @@ namespace XRLab
         /// <param name="targets">targets array inherited from <c>Editor</c> by caller class</param>
         /// <param name="targetType">the type of editor to get a reference to</param>
         /// <returns></returns>
-        public static Editor GetEditorReflection(Object[] targets, string targetType)
-        {
-            // Use reflection to get a reference to the default editor
-            var assembly = Assembly.GetAssembly(typeof(Editor));
-            var type = assembly.GetType(targetType);
-            return Editor.CreateEditor(targets, type);
-        }
+        //public static Editor GetEditorReflection(Object[] targets, string targetType)
+        //{
+        //    // Use reflection to get a reference to the default editor
+        //    var assembly = Assembly.GetAssembly(typeof(Editor));
+        //    var type = assembly.GetType(targetType);
+        //    return Editor.CreateEditor(targets, type);
+        //}
         #endregion
 
         #region Misc Utilities

@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/CW2 Prototype/CW2 Prototype.unity
+    guid: 4b146777ad53ce74ab0cea8c0335131c
   m_configObjects:
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: e373ea444b3c0394e86169e585abb721,
       type: 2}
