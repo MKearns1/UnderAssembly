@@ -26,6 +26,7 @@ public class GeneralScript : MonoBehaviour
     public int ComponentsUsed;
     UnityEngine.UI.Text MonitorProductTextMesh;
 
+    TVscript TVDisplay;
 
     public List<GameObject> PokeInteractors = new List<GameObject>();
     public List<GameObject> DirectInteractors = new List<GameObject>();
@@ -49,6 +50,7 @@ public class GeneralScript : MonoBehaviour
     void Start()
     {
         InitialGameStart();
+        TVDisplay = GameObject.Find("Display").GetComponent<TVscript>();
     }
 
     public void SpawnNewObject()
@@ -131,10 +133,10 @@ public class GeneralScript : MonoBehaviour
         {
             g.SetActive(true);
         }
-        GameObject.Find("InvisibleWalls").transform.GetChild(1).gameObject.SetActive(false);
-        GameObject.Find("InvisibleWalls").transform.GetChild(2).gameObject.SetActive(false);
-        GameObject.Find("InvisibleWalls").transform.GetChild(3).gameObject.SetActive(false);
-        GameObject.Find("InvisibleWalls").transform.GetChild(4).gameObject.SetActive(false);
+       // GameObject.Find("InvisibleWalls").transform.GetChild(1).gameObject.SetActive(false);
+       // GameObject.Find("InvisibleWalls").transform.GetChild(2).gameObject.SetActive(false);
+       // GameObject.Find("InvisibleWalls").transform.GetChild(3).gameObject.SetActive(false);
+       // GameObject.Find("InvisibleWalls").transform.GetChild(4).gameObject.SetActive(false);
 
         SpawnNewObject();
     }
@@ -237,5 +239,20 @@ public class GeneralScript : MonoBehaviour
         {
             return "DERELICT";
         }
+    }
+
+    public void ProductDelivered(bool correct)
+    {
+        if (correct)
+        {
+            ProductsMade++;
+            ProductsSuccessfullyMade++;
+        }
+        else
+        {
+            ProductsMade++;
+            ErrorsMade++;
+        }
+        TVDisplay.ObjectDelivered();
     }
 }

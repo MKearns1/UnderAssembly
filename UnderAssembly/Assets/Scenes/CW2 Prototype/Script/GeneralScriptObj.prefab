@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5140948154483897136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 307840220692619716}
+  - component: {fileID: 4333429762206966831}
+  m_Layer: 0
+  m_Name: GeneralScriptObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &307840220692619716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140948154483897136}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.332563, y: -1.8484553, z: -4.5119743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4333429762206966831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140948154483897136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241ccd20a9d1f2d4083a7db037fc9f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentProduct: {fileID: 0}
+  Assembly: {fileID: 0}
+  NewObjectSpawn: {fileID: 0}
+  ObjectsToSpawn:
+  - {fileID: 3302954833980959126, guid: 4de395f2c81caed4dba1da39d6c44ebb, type: 3}
+  - {fileID: 3302954833980959126, guid: aff7f992495dd044aaf755c6aaa93bda, type: 3}
+  - {fileID: 3302954833980959126, guid: 577d31ae1e6ac724fb66102a09a7e1f7, type: 3}
+  - {fileID: 3302954833980959126, guid: 47cd2414806558242bea8d61818222e3, type: 3}
+  - {fileID: 3302954833980959126, guid: f0b57cd2cbb74654da85602c128c6ddf, type: 3}
+  NewProductTemplate: {fileID: 0}
+  templates:
+  - Variants:
+    - Prefab: {fileID: 3059681648000056446, guid: 7b7f6e4b786012b4e876aa9b042c1594,
+        type: 3}
+    - Prefab: {fileID: 3059681648000056446, guid: cc816af9b31a0184297ce6fa76ca74fc,
+        type: 3}
+    - Prefab: {fileID: 3059681648000056446, guid: 22e8109220f6eb944bb8aae19c1991cb,
+        type: 3}
+  - Variants:
+    - Prefab: {fileID: 1590737144583720702, guid: 7b64c67f3aecd3e4fa875d6c4dcb9641,
+        type: 3}
+    - Prefab: {fileID: 1590737144583720702, guid: bb9b0304c39fa7148adde232e11123a3,
+        type: 3}
+    - Prefab: {fileID: 1590737144583720702, guid: 5e9ec0cd86ca70f4c936367e1f31a989,
+        type: 3}
+    - Prefab: {fileID: 1590737144583720702, guid: 17e70eaaabf50324aa5b484840117db8,
+        type: 3}
+    - Prefab: {fileID: 1590737144583720702, guid: 4cc9973ad1698c943ae3fbf1ec57bd96,
+        type: 3}
+    - Prefab: {fileID: 1590737144583720702, guid: 29ce88d73c1bdc64e9595d7128b5affb,
+        type: 3}
+  - Variants:
+    - Prefab: {fileID: 5410960100367058131, guid: daddaa2069b285445847b429c90e971c,
+        type: 3}
+    - Prefab: {fileID: 5410960100367058131, guid: c50b769aca655594d9f15e11655a80f6,
+        type: 3}
+    - Prefab: {fileID: 5410960100367058131, guid: 1931ea3da45421c4389f483927adc367,
+        type: 3}
+  - Variants:
+    - Prefab: {fileID: 7897209813160538578, guid: cc06ec4d3ba59644b8158dc06f1d94c0,
+        type: 3}
+    - Prefab: {fileID: 7897209813160538578, guid: ba9e0283b78b69a4f8fc69911f355746,
+        type: 3}
+    - Prefab: {fileID: 7897209813160538578, guid: cf0ab0d140cc18e488a94090f094fe34,
+        type: 3}
+  - Variants:
+    - Prefab: {fileID: 3340991793935102483, guid: 504edcbd9890d35488a1fe4cddfce3e2,
+        type: 3}
+    - Prefab: {fileID: 3340991793935102483, guid: ad9bd5839011cd34fbcfb27d5b7c7e36,
+        type: 3}
+  ProductsSuccessfullyMade: 0
+  ProductsMade: 0
+  ErrorsMade: 0
+  Quota: 20
+  GameStarted: 0
+  ComponentsUsed: 0
+  PokeInteractors:
+  - {fileID: 0}
+  - {fileID: 0}
+  DirectInteractors:
+  - {fileID: 0}
+  - {fileID: 0}
+  RayInteractors:
+  - {fileID: 0}
+  - {fileID: 0}
+  input: {fileID: -8825771666515293495, guid: c348712bda248c246b8c49b3db54643f, type: 3}

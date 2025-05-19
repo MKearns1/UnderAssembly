@@ -45,18 +45,9 @@ public class EvaluatorScript : MonoBehaviour
             {
                 AssembledProduct = other.gameObject;
                 AssembledObjectScript = other.GetComponent<ObjectBaseScript>();
-                if (EvaluateProduct())
-                {
-                    Debug.Log("CORRECT");
-                    GeneralScript.Instance.ProductsSuccessfullyMade++;
-                    GeneralScript.Instance.ProductsMade++;
-                }
-                else
-                {
-                    Debug.Log("WRONG"); GeneralScript.Instance.ProductsMade++;
-                    GeneralScript.Instance.ErrorsMade++;
 
-                }
+                GeneralScript.Instance.ProductDelivered(EvaluateProduct());
+
                 AssembledObjectScript.DestroySelf();
             }
         }

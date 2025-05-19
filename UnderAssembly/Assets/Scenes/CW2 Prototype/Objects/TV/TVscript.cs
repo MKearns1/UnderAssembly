@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.UI;
 
 public class TVscript : MonoBehaviour
@@ -69,6 +70,8 @@ public class TVscript : MonoBehaviour
 
                 Sprite sprite = Sprite.Create(DisplayIcon, new Rect(0, 0, DisplayIcon.width, DisplayIcon.height), new Vector2(0.5f, 0.5f));
                 ProductIcon.transform.Find("Image").GetComponent<UnityEngine.UI.Image>().sprite = sprite;
+                ProductIcon.transform.Find("Image").GetComponent<UnityEngine.UI.Image>().color = Color.white;
+
             }
         }
 
@@ -148,5 +151,15 @@ public class TVscript : MonoBehaviour
         EvalScreen.transform.Find("Errors").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.ErrorsMade.ToString();
         EvalScreen.transform.Find("ComponentsUsed").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.ComponentsUsed.ToString();
         EvalScreen.transform.Find("Cleanliness").Find("Rating").GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GeneralScript.Instance.CalculateCleanliness().ToString();
+    }
+
+
+    public void ObjectDelivered()
+    {
+        ProductName.transform.Find("Text").GetComponent<UnityEngine.UI.Text>().text = "CONTINUE TO NEXT PRODUCT";
+        ProductColour.transform.Find("Image").Find("Text").GetComponent<TextMeshProUGUI>().text = "";
+        ProductColour.transform.Find("Image").GetComponent<UnityEngine.UI.Image>().color = Color.clear;
+
+        ProductIcon.transform.Find("Image").GetComponent<UnityEngine.UI.Image>().color = Color.clear;
     }
 }
